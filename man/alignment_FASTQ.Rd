@@ -23,11 +23,11 @@ This function is suitable for handling large sequencing datasets and supports
 alignment of long-read sequencing data, including Nanopore reads.
 }
 \examples{
-# Example 1: Align a FASTQ file to a reference genome
+# Example 1: Align a FASTQ file to a reference genome,remember to replace the file path to local while using.
 alignmentResult <- alignment_FASTQ(
-  fastqPath = "path/to/your/file.fastq",
-  referencePath = "path/to/reference_genome.fasta",
-  outputBAM = "aligned_output.bam"
+  fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
+  referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
+  outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq"
 )
 
 }
