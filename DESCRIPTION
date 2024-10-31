@@ -3,7 +3,7 @@ Type: Package
 Title: LegitXMut is designed to handle Nanopore sequencing data in order to perform sequence alignments,
  identify/filter mutation and genomics characteristics, data quality control,
  and calculate&summarize error rates, this package also includes methods for 
- creating comprehensive summary tables and visualizing error distributions and mutation patterns.
+ creating comprehensive summary tables and visualizing error distributions and mutation patterns
 Version: 0.1.0
 Authors@R: person("Zhenghao", "Xiao", 
                   email = "zhenghao.xiao@mail.utoronto.ca", 
@@ -18,9 +18,9 @@ Depends: R (>= 4.4.1)
 biocViews:
 Remotes: github::hadley/ggplot2
 Imports: 
-    mclust,
-    stats,
-    edgeR,
+    GenomicAlignments,
+    Rsubread,
+    ShortRead,
     ggplot2,
     shiny,
     shinyalert,
