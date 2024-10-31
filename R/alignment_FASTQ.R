@@ -14,9 +14,9 @@
 #' @examples
 #' # Example 1: Align a FASTQ file to a reference genome
 #' alignmentResult <- alignment_FASTQ(
-#'   fastqPath = "path/to/your/file.fastq",
-#'   referencePath = "path/to/reference_genome.fasta",
-#'   outputBAM = "aligned_output.bam"
+#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
+#'   referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
+#'   outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq"
 #' )
 #'
 #' @references
@@ -37,28 +37,27 @@
 #' @import GenomicAlignments
 alignment_FASTQ <- function(fastqPath, referencePath, outputBAM = "output.bam") {
 
-  # Step 1: Build Index for the Reference Genome if not already built
-  indexBase <- gsub("\\.fasta$", "", referencePath)  # Base name for index
+  indexBase <- gsub("\\.fasta$", "", referencePath)
+
   if (!file.exists(paste0(indexBase, ".00.b.array"))) {
     message("Building index for the reference genome...")
     Rsubread::buildindex(basename = indexBase, reference = referencePath)
   }
 
-  # Step 2: Align Reads to Reference Genome
   message("Aligning reads to the reference genome...")
   Rsubread::align(index = indexBase,
                   readfile1 = fastqPath,
                   input_format = "FASTQ",
                   output_file = outputBAM,
-                  nthreads = 4,           # Use multiple threads for faster processing
-                  indels = TRUE,          # Allow indels in alignment for better accuracy
-                  maxMismatches = 3)      # Allow up to 3 mismatches per read
+                  nthreads = 4,
+                  indels = 5,
+                  maxMismatches = 3)
 
   message("Alignment complete. BAM file saved as: ", outputBAM)
 
-  # Optional: Load BAM File with GenomicAlignments for downstream analysis
   bamData <- GenomicAlignments::readGAlignments(outputBAM)
   return(bamData)
 }
+
 
 # [END] written by Zhenghao Xiao

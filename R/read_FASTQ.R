@@ -16,13 +16,13 @@
 #' @examples
 #' # Example 1: Process entire FASTQ file in parts
 #' fullData <- read_FASTQ(
-#'   filePath = "path/to/your/file.fastq",
+#'   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
 #'   Size = 1e6
 #' )
 #'
 #' # Example 2: Sample 20,000 random records from the FASTQ file
 #' sampledData <- read_FASTQ(
-#'   filePath = "path/to/your/file.fastq",
+#'   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
 #'   sampleSize = 20000
 #' )
 #'
