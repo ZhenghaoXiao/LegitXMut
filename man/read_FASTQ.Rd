@@ -25,13 +25,13 @@ or by sampling a specified number of records. This function is suitable for
 handling large sequencing datasets in bioinformatics.
 }
 \examples{
-# Example 1: Process entire FASTQ file in parts, remember to replace the file path to local while using.
+# Example 1: Process entire FASTQ file in parts, replace it with local path.
 fullData <- read_FASTQ(
   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
   Size = 1e6
 )
 
-# Example 2: Sample 20,000 random records from the FASTQ file, remember to replace the file path to local while using.
+# Example 2: Sample 20,000 random records from the FASTQ file, replace it with local path.
 sampledData <- read_FASTQ(
   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
   sampleSize = 20000

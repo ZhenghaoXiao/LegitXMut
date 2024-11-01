@@ -23,11 +23,11 @@ This function is suitable for handling large sequencing datasets and supports
 alignment of long-read sequencing data, including Nanopore reads.
 }
 \examples{
-# Example 1: Align a FASTQ file to a reference genome,remember to replace the file path to local while using.
+# Example 1: Align a FASTQ file to a reference genome.
 alignmentResult <- alignment_FASTQ(
   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
-  referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
-  outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq"
+  referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fasta",
+  outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/aligned_output.bam"
 )
 
 }
@@ -40,6 +40,10 @@ Liao Y, Smyth GK, Shi W (2019). “The R package Rsubread is easier, faster, che
 and better for alignment and quantification of RNA sequencing reads.”
 Nucleic Acids Research, 47, e47. doi:10.1093/nar/gkz114.
 Available at: https://academic.oup.com/nar/article/47/8/e47/5371636.
+
+NCBI. TP53 gene (Gene ID: 7157), Homo sapiens (human). NCBI Gene Database.
+National Center for Biotechnology Information (NCBI).
+Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 "Assignment". https://chat.openai.com (2023, accessed 30 October 2024).
