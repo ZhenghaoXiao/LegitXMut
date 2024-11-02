@@ -21,7 +21,7 @@ Imports:
     GenomicAlignments,
     Rsubread,
     ShortRead,
-    ggplot2,
+    Rsamtools,
     shiny,
     shinyalert,
 License: MIT + file LICENSE

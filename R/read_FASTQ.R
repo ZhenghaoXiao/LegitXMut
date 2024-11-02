@@ -16,13 +16,13 @@
 #' @examples
 #' # Example 1: Process entire FASTQ file in parts, replace it with local path.
 #' fullData <- read_FASTQ(
-#'   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
+#'   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_demo.fastq",
 #'   Size = 1e6
 #' )
 #'
 #' # Example 2: Sample 20,000 random records from the FASTQ file, replace it with local path.
 #' sampledData <- read_FASTQ(
-#'   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
+#'   filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_demo.fastq",
 #'   sampleSize = 20000
 #' )
 #'
@@ -37,7 +37,7 @@
 #' Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
 #'
 #' OpenAI. ChatGPT: Debugging assistance and suggestions in use of R package functions,
-#' "Assignment". https://chat.openai.com (2023, accessed 30 October 2024).
+#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
 #'
 #' @export
 #' @import ShortRead

@@ -12,10 +12,10 @@
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
 #' @examples
-#' # Example 1: Align a FASTQ file to a reference genome.
+#' # Example 1: Align a FASTQ file to a reference genome, replace it with local path.
 #' alignmentResult <- alignment_FASTQ(
-#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fastq",
-#'   referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence.fasta",
+#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_mutated_demo.fastq",
+#'   referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_demo_ref.fasta",
 #'   outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/aligned_output.bam"
 #' )
 #'
@@ -34,7 +34,7 @@
 #' Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-#' "Assignment". https://chat.openai.com (2023, accessed 30 October 2024).
+#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
 #'
 #' @export
 #' @import Rsubread
