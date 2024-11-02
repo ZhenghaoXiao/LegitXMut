@@ -27,13 +27,13 @@ handling large sequencing datasets in bioinformatics.
 \examples{
 # Example 1: Process entire FASTQ file in parts, replace it with local path.
 fullData <- read_FASTQ(
-  filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_demo.fastq",
+  filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo.fastq",
   Size = 1e6
 )
 
 # Example 2: Sample 20,000 random records from the FASTQ file, replace it with local path.
 sampledData <- read_FASTQ(
-  filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_demo.fastq",
+  filePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo.fastq",
   sampleSize = 20000
 )
 

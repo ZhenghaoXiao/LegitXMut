@@ -25,9 +25,9 @@ alignment of long-read sequencing data, including Nanopore reads.
 \examples{
 # Example 1: Align a FASTQ file to a reference genome, replace it with local path.
 alignmentResult <- alignment_FASTQ(
-  fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_mutated_demo.fastq",
-  referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/sequence_demo_ref.fasta",
-  outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/aligned_output.bam"
+  fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_mutated_demo.fastq",
+  referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
+  outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
 )
 
 }

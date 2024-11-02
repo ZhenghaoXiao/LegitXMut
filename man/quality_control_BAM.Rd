@@ -33,12 +33,12 @@ these requirements, ensuring that only high-quality reads are retained for downs
 analyses, such as variant calling.
 }
 \examples{
-# Example: Filter a BAM file based on minimum length and depth requirements
+# Example: Filter a BAM file based on minimum length and depth requirements, replace it with local path.
 filteredResult <- quality_control_BAM(
-  bamPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/aligned_output.bam",
+  bamPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam",
   min_length = 50,
   min_depth = 10,
-  outputBAM = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/data/filtered_output.bam"
+  outputBAM = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/filtered_output.bam"
 )
 
 }
