@@ -33,11 +33,11 @@ these requirements, ensuring that only high-quality reads are retained for downs
 analyses, such as variant calling.
 }
 \examples{
-# Example: Filter a BAM file based on minimum length and depth requirements, replace it with local path.
+# Example 1: Filter a BAM file based on minimum length and depth requirements, replace it with local path.
 filteredResult <- quality_control_BAM(
   bamPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam",
-  min_length = 50,
-  min_depth = 10,
+  min_length = 150,
+  min_depth = 1,
   outputBAM = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/filtered_output.bam"
 )
 
@@ -46,6 +46,13 @@ filteredResult <- quality_control_BAM(
 Morgan M, Pagès H, Obenchain V, Hayden N (2024). Rsamtools: Binary
 alignment (BAM), FASTA, variant call (BCF), and tabix file import. R package
 version 2.20.0, https://bioconductor.org/packages/Rsamtools.
+
+NCBI. TP53 gene (Gene ID: 7157), Homo sapiens (human). NCBI Gene Database.
+National Center for Biotechnology Information (NCBI).
+Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
+
+NCBI. Trace Archive, Run Browser for SRR4000542. National Center for Biotechnology Information (NCBI).
+Available at: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR4000542&display=metadata. Accessed on: October 31, 2024.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).

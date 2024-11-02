@@ -14,7 +14,7 @@
 #' @examples
 #' # Example 1: Align a FASTQ file to a reference genome, replace it with local path.
 #' alignmentResult <- alignment_FASTQ(
-#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_mutated_demo.fastq",
+#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR4000542.fastq",
 #'   referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
 #'   outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
 #' )
@@ -32,6 +32,9 @@
 #' NCBI. TP53 gene (Gene ID: 7157), Homo sapiens (human). NCBI Gene Database.
 #' National Center for Biotechnology Information (NCBI).
 #' Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
+#'
+#' NCBI. Trace Archive, Run Browser for SRR4000542. National Center for Biotechnology Information (NCBI).
+#' Available at: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR4000542&display=metadata. Accessed on: October 31, 2024.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 #' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
@@ -62,6 +65,5 @@ alignment_FASTQ <- function(fastqPath, referencePath, outputBAM = "output.bam") 
   bamData <- GenomicAlignments::readGAlignments(outputBAM)
   return(bamData)
 }
-
 
 # [END] written by Zhenghao Xiao
