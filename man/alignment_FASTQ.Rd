@@ -2,7 +2,7 @@
 % Please edit documentation in R/alignment_FASTQ.R
 \name{alignment_FASTQ}
 \alias{alignment_FASTQ}
-\title{Aligns FASTQ File to Reference Genome and Produces a BAM File and A VCF file}
+\title{Aligns FASTQ File to Reference Genome and Produces a BAM File, a VCF file and a summary.}
 \usage{
 alignment_FASTQ(
   fastqPath,
@@ -33,7 +33,7 @@ This function is suitable for handling large sequencing datasets and supports
 alignment of Nanopore reads and quality control.
 }
 \examples{
-# Example 1: Align a FASTQ file to a reference genome with custom parameters, repace it with local path
+# Example 1: Align a FASTQ file to a reference genome with custom parameters.
 alignmentResult <- alignment_FASTQ(
   fastqPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR12810518.fastq",
   referencePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",

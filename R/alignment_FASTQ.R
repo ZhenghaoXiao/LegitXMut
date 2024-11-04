@@ -1,4 +1,4 @@
-#' Aligns FASTQ File to Reference Genome and Produces a BAM File and A VCF file
+#' Aligns FASTQ File to Reference Genome and Produces a BAM File, a VCF file and a summary.
 #'
 #' A function to align a FASTQ file to a reference genome, generating a BAM file.
 #' This function is suitable for handling large sequencing datasets and supports
