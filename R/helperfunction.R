@@ -12,7 +12,7 @@
 #' @examples
 #' # Example: Update chromosome names in a VCF file using a reference FASTA file, replace with local path
 #' updatingvcf <- update_vcf_chromosome_names(
-#'   fastaPath = C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
+#'   fastaPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
 #'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf",
 #'   outputVcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 #' )

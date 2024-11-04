@@ -20,18 +20,17 @@
 #'   plotType = "karyogram"
 #' )
 #'
-#' # Example 2: Generate a density plot of variants across chromosomes
+#' # Example 2: Generate a heatmap of variants' frequency across chromosomes
 #' plot_vcf_mutation_data(
 #'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
 #'   plotType = "density"
 #' )
 #'
-#' # Example 3: Generate a lollipop plot for mutations in the TP53 gene
+#' # Example 3: Generate a manhattan plot for mutations in the TP53 gene
 #' plot_vcf_mutation_data(
 #'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-#'   plotType = "lollipop",
-#'   gene = "TP53"
-#'   title = "Lollipop Plot of Mutations in TP53 Gene"
+#'   plotType = "manhattan",
+#'   title = "Manhattan Plot of Mutations in TP53 Gene on chromosome 17"
 #' )
 #'
 #' # Example 4: Generate a circular plot of whole-genome mutations
@@ -46,10 +45,6 @@
 #' “VariantAnnotation: annotation of genetic variants.”
 #' Bioconductor. doi:10.18129/B9.bioc.VariantAnnotation. Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 #'
-#' Yin T, Cook D, Lawrence M (2012). “ggbio: an R package for extending
-#'  visualization capabilities of the popular ggplot2 package to genomic data.”
-#' Genome Biology, 13(8):R77. doi:10.1186/gb-2012-13-8-r77.
-#'
 #' Wang, L. et al. (2017). “trackViewer: a Bioconductor package for interactive
 #' and integrative visualization of multi-omics data.”
 #' BMC Bioinformatics 18, 124. doi:10.1186/s12859-017-1542-4.
@@ -62,11 +57,11 @@
 #'
 #' @export
 #' @import VariantAnnotation
-#' @import ggbio
-#' @import trackViewer
 #' @import circlize
 #' @import GenomicRanges
-plot_vcf_mutation_data <- function(vcfPath, plotType = "karyogram", gene = NULL, title = "Plot") {
+#' @import ggplot2
+#' @import ComplexHeatmap
+plot_vcf_mutation_data <- function(vcfPath, plotType = "karyogram", species = "hg38", title = "Plot") {
   # Load the VCF file
   vcf <- VariantAnnotation::readVcf(vcfPath, genome = "hg38")
 
@@ -93,33 +88,98 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "karyogram", gene = NULL,
     ALT = mcols(row_ranges)$ALT
   )
 
-  # Generate plot based on plotType
-  if (plotType == "karyogram") {
-    p <- ggbio::autoplot(gr, layout = "karyogram", aes(color = seqnames)) +
-      labs(title = "Karyogram of Variants")
-    print(p)
+  if (plotType == "heatmap") {
+    chrom_counts <- as.data.frame(table(seqnames(gr)))
+    colnames(chrom_counts) <- c("Chromosome", "Mutation_Count")
 
-  } else if (plotType == "density") {
-    p <- ggbio::autoplot(gr, stat = "coverage", geom = "line") +
-      labs(title = "Variant Density Across Chromosomes")
-    print(p)
+    mutation_matrix <- as.matrix(chrom_counts["Mutation_Count"])
+    rownames(mutation_matrix) <- chrom_counts$Chromosome
 
-  } else if (plotType == "lollipop") {
-    if (is.null(gene)) {
-      stop("Please specify a gene name for the lollipop plot.")
+    if (length(unique(mutation_matrix)) == 1) {
+      warning("Only one unique mutation count present. Adjusting color scale for single value.")
+      mutation_matrix <- cbind(mutation_matrix, mutation_matrix + 0.01)
+      colnames(mutation_matrix) <- c("Mutation_Count", "Adjusted_Value")
     }
 
-    gr_gene <- subset(gr, seqnames == gene)
-    trackViewer::lolliplot(gr_gene, gr, ylab = "Mutation Frequency")
+    annotation_row <- data.frame(
+      Group = ifelse(mutation_matrix[, 1] > median(mutation_matrix[, 1]), "High Mutation", "Low Mutation")
+    )
+    rownames(annotation_row) <- rownames(mutation_matrix)
 
-  } else if (plotType == "circos") {
+    annotation_colors <- list(
+      Group = c("High Mutation" = "darkgreen", "Low Mutation" = "purple")
+    )
+
+    col_fun <- circlize::colorRamp2(
+      breaks = c(min(mutation_matrix), max(mutation_matrix)),
+      colors = c("white", "red")
+    )
+
+    row_ha <- ComplexHeatmap::rowAnnotation(
+      Group = annotation_row$Group,
+      col = annotation_colors
+    )
+
+    ComplexHeatmap::Heatmap(
+      mutation_matrix,
+      name = "Mutation Count",
+      col = col_fun,
+      cluster_rows = nrow(mutation_matrix) > 1,
+      cluster_columns = FALSE,
+      row_names_side = "left",
+      column_names_side = "top",
+      row_title = "Chromosomes",
+      column_title = title,
+      show_row_dend = nrow(mutation_matrix) > 1,
+      row_names_gp = grid::gpar(fontsize = 10),
+      column_names_gp = grid::gpar(fontsize = 10, rot = 45),
+      left_annotation = row_ha,
+      heatmap_legend_param = list(
+        title = "Mutation Count",
+        at = c(min(mutation_matrix), max(mutation_matrix)),
+        labels = c("Low", "High")
+      )
+    )
+  }
+  else if (plotType == "manhattan") {
+
+    vcf_data <- VariantAnnotation::readVcf(vcfPath, genome = "hg38")
+
+    info_data <- info(vcf_data)
+
+    if ("SR" %in% colnames(info_data)) {
+      SR_values <- as.numeric(info_data$SR)
+    } else {
+      stop("The 'SR' field is not present in the INFO column. Ensure the VCF has SR values.")
+    }
+
+    SR_values[is.na(SR_values)] <- 1
+
+    if (length(SR_values) != length(rowRanges(vcf_data))) {
+      stop("Mismatch in SR values and number of VCF records.")
+    }
+
+    chrom_data <- data.frame(
+      Chromosome = as.character(seqnames(rowRanges(vcf_data))),
+      Position = start(rowRanges(vcf_data)),
+      SR = SR_values
+    )
+
+    p <- ggplot2::ggplot(chrom_data, aes(x = Position, y = -log10(SR), color = Chromosome)) +
+      ggplot2::geom_point(alpha = 0.6) +
+      ggplot2::facet_wrap(~ Chromosome, scales = "free_x") +
+      ggplot2::labs(title = title, x = "Position", y = "-log10") +
+      ggplot2::theme_minimal()
+    print(p)
+  }
+  else if (plotType == "circos") {
     chrom_data <- as.data.frame(gr)
 
     circlize::circos.clear()
 
     circlize::circos.initializeWithIdeogram(
-      species = "hg38",    # Adding human ideograms if the genome is hg38
-      plotType = c("ideogram", "labels")   # Include ideograms and chromosome labels
+      species = species,
+      plotType = c("ideogram", "labels")
     )
 
     circlize::circos.track(
@@ -140,13 +200,13 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "karyogram", gene = NULL,
         circos.rect(xleft = x, xright = x + 1, ybottom = 0, ytop = 1, col = "red", border = NA)
       },
       track.height = 0.1,
-      bg.col = "gray90"   # Light background for better visibility
+      bg.col = "gray90"
     )
 
     title(title)
 
   } else {
-    stop("Invalid plot type. Choose from 'karyogram', 'density', 'lollipop', or 'circos'.")
+    stop("Invalid plot type. Choose from 'karyogram', 'heatmap', 'manhattan', or 'circos'.")
   }
 }
 
