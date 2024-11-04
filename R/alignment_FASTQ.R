@@ -16,17 +16,11 @@
 #' @examples
 #' # Example 1: Align a FASTQ file to a reference genome with custom parameters, repace it with local path
 #' alignmentResult <- alignment_FASTQ(
-<<<<<<< HEAD
 #'   fastqPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR12810518.fastq",
 #'   referencePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
 #'   indels = 5,
 #'   maxMismatches = 500,
 #'   outputBAM = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
-=======
-#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR4000542.fastq",
-#'   referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
-#'   outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
->>>>>>> f62bcbae33a06d9d79ad56142a6d1b92b27cdc7f
 #' )
 #'
 #' @references
@@ -44,11 +38,7 @@
 #' Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
 #'
 #' NCBI. Trace Archive, Run Browser for SRR4000542. National Center for Biotechnology Information (NCBI).
-<<<<<<< HEAD
 #' Available at: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR12810518&display=metadata. Accessed on: October 31, 2024.
-=======
-#' Available at: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR4000542&display=metadata. Accessed on: October 31, 2024.
->>>>>>> f62bcbae33a06d9d79ad56142a6d1b92b27cdc7f
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 #' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
@@ -80,4 +70,6 @@ alignment_FASTQ <- function(fastqPath, referencePath, indels = 10, maxMismatches
   return(bamData)
 }
 
+
 # [END] written by Zhenghao Xiao
+
