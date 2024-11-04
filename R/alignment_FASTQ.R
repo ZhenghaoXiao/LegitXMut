@@ -2,21 +2,25 @@
 #'
 #' A function to align a FASTQ file to a reference genome, generating a BAM file.
 #' This function is suitable for handling large sequencing datasets and supports
-#' alignment of long-read sequencing data, including Nanopore reads.
+#' alignment of Nanopore reads and quality control.
 #'
 #' @param fastqPath A character string for the path to the FASTQ file.
 #' @param referencePath A character string for the path to the reference genome in FASTA format.
+#' @param indels An integer specifying the maximum number of insertions or deletions allowed in the alignment. Default is 10.
+#' @param maxMismatches An integer specifying the maximum number of mismatches allowed in the alignment. Default is 1000.
 #' @param outputBAM A character string for the name of the output BAM file. Default is "output.bam".
 #'
 #' @return An object containing alignment information from the BAM file,
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
 #' @examples
-#' # Example 1: Align a FASTQ file to a reference genome, replace it with local path.
+#' # Example 1: Align a FASTQ file to a reference genome with custom parameters, repace it with local path
 #' alignmentResult <- alignment_FASTQ(
-#'   fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_mutated_demo.fastq",
-#'   referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
-#'   outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
+#'   fastqPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR12810518.fastq",
+#'   referencePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
+#'   indels = 5,
+#'   maxMismatches = 500,
+#'   outputBAM = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
 #' )
 #'
 #' @references
@@ -33,13 +37,16 @@
 #' National Center for Biotechnology Information (NCBI).
 #' Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
 #'
+#' NCBI. Trace Archive, Run Browser for SRR4000542. National Center for Biotechnology Information (NCBI).
+#' Available at: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR12810518&display=metadata. Accessed on: October 31, 2024.
+#'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 #' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
 #'
 #' @export
 #' @import Rsubread
 #' @import GenomicAlignments
-alignment_FASTQ <- function(fastqPath, referencePath, outputBAM = "output.bam") {
+alignment_FASTQ <- function(fastqPath, referencePath, indels = 10, maxMismatches = 1000, outputBAM = "output.bam") {
 
   indexBase <- gsub("\\.fasta$", "", referencePath)
 
@@ -53,9 +60,9 @@ alignment_FASTQ <- function(fastqPath, referencePath, outputBAM = "output.bam") 
                   readfile1 = fastqPath,
                   input_format = "FASTQ",
                   output_file = outputBAM,
-                  nthreads = 4,
-                  indels = 5,
-                  maxMismatches = 3)
+                  nthreads = 1,
+                  indels = indels,
+                  maxMismatches = maxMismatches)
 
   message("Alignment complete. BAM file saved as: ", outputBAM)
 
