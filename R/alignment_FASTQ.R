@@ -14,8 +14,7 @@
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
 #' @examples
-#' # Example 1: Align a FASTQ file to a reference genome with custom parameters,
-#' repace it with local path
+#' # Example 1: Align a FASTQ file to a reference genome with custom parameters.
 #' alignmentResult <- alignment_FASTQ(
 #'   fastqPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR12810518.fastq",
 #'   referencePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
