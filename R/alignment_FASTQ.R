@@ -1,4 +1,4 @@
-#' Aligns FASTQ File to Reference Genome and Produces a BAM File
+#' Aligns FASTQ File to Reference Genome and Produces a BAM File and A VCF file
 #'
 #' A function to align a FASTQ file to a reference genome, generating a BAM file.
 #' This function is suitable for handling large sequencing datasets and supports
@@ -14,7 +14,8 @@
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
 #' @examples
-#' # Example 1: Align a FASTQ file to a reference genome with custom parameters, repace it with local path
+#' # Example 1: Align a FASTQ file to a reference genome with custom parameters,
+#' repace it with local path
 #' alignmentResult <- alignment_FASTQ(
 #'   fastqPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR12810518.fastq",
 #'   referencePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",

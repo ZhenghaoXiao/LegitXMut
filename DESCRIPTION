@@ -22,8 +22,6 @@ Imports:
     Rsubread,
     ShortRead,
     Rsamtools,
-    VariantAnnotation,
-    VariantTools,
     shiny,
     shinyalert,
 License: MIT + file LICENSE
