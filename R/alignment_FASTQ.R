@@ -72,4 +72,3 @@ alignment_FASTQ <- function(fastqPath, referencePath, indels = 10, maxMismatches
 
 
 # [END] written by Zhenghao Xiao
-

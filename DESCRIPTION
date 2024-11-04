@@ -21,7 +21,8 @@ Imports:
     GenomicAlignments,
     Rsubread,
     ShortRead,
-    Rsamtools,
+    GenVisR,
+    maftools,
     shiny,
     shinyalert,
 License: MIT + file LICENSE
