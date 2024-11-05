@@ -46,7 +46,7 @@ devtools::install_github("ZhenghaoXiao/LegitXMut", build_vignettes = TRUE)
 library(LegitXMut)
 ```
 
-# Example
+# Examples
 
 ``` r
 #Align a FASTQ file to a reference genome with custom parameters.

@@ -43,7 +43,7 @@ library(LegitXMut)
 
 ```
 
-# Example
+# Examples
 
 ```{r, eval = FALSE}
 #Align a FASTQ file to a reference genome with custom parameters.
