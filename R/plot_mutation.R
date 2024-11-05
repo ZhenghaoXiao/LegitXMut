@@ -89,9 +89,8 @@
 #'
 #' R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria, 2024, https://www.R-project.org/.
 #'
-#'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
+#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
 #'
 #' @export
 #' @importFrom VariantAnnotation readVcf ref alt info

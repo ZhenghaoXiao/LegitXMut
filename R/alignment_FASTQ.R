@@ -36,7 +36,7 @@
 #' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
+#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
 #'
 #' @export
 #' @import Rsubread

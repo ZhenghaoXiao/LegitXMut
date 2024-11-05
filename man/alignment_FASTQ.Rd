@@ -33,11 +33,11 @@ This function is suitable for handling large sequencing datasets and supports
 alignment of Nanopore reads and quality control.
 }
 \examples{
-\dontrun{# Example 1: Align a FASTQ file to a reference genome with custom parameters.
+# Example 1: Align a FASTQ file to a reference genome with custom parameters.
 mutateddemoalignment <- alignment_FASTQ(fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR29917898.fastq",
 referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna",
 outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam")
-}
+
 }
 \references{
 Morgan M, Lawrence M, Aboyoun P, Gentleman R, and Pages H (2019).
@@ -56,5 +56,5 @@ National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA
 NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-"Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
+"Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
 }

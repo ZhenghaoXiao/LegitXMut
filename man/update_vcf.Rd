@@ -42,7 +42,7 @@ GenomeInfoDb: Utilities for manipulating chromosome names, including modifying t
 R package version 1.36.0, Bioconductor, https://bioconductor.org/packages/GenomeInfoDb.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-"Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
+"Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
 
 National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
 NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
