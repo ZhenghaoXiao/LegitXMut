@@ -8,10 +8,11 @@ The goal of LegitXMut is to ...
 
 ## Installation
 
-You can install the development version of LegitXMut like so:
+You can install the development version of LegitXMut from [GitHub](https://github.com/) with:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# install.packages("pak")
+pak::pak("ZhenghaoXiao/LegitXMut")
 ```
 
 ## Example

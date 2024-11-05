@@ -42,7 +42,7 @@
 #' @importFrom VariantAnnotation readVcf writeVcf
 #' @import stringr
 #' @importFrom GenomeInfoDb seqlevels
-update_vcf <- function(fastaPath, vcfPath, outputVcfPath) {
+update_VCF <- function(fastaPath, vcfPath, outputVcfPath) {
 
   chrom_mapping <- list()
   fasta_con <- file(fastaPath, "r")

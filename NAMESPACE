@@ -2,7 +2,7 @@
 
 export(alignment_FASTQ)
 export(plot_vcf_mutation_data)
-export(update_vcf)
+export(update_VCF)
 import(ComplexHeatmap)
 import(Rsubread)
 import(circlize)
