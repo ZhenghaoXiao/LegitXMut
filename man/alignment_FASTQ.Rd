@@ -34,9 +34,13 @@ alignment of Nanopore reads and quality control.
 }
 \examples{
 # Example 1: Align a FASTQ file to a reference genome with custom parameters.
-mutateddemoalignment <- alignment_FASTQ(fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR29917898.fastq",
-referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna",
-outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam")
+# Replace with actual test file path
+fastqPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR29917898.fastq"
+referencePath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna"
+outputBAM <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
+mutateddemoalignment <- alignment_FASTQ(fastqPath =  fastqPath,
+referencePath =  referencePath,
+outputBAM =  outputBAM)
 
 }
 \references{

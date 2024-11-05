@@ -4,15 +4,13 @@ Title: An R Package Designed for Mutation Analysis Directly from FASTQ File to V
 Version: 0.1.0
 Authors@R: person("Zhenghao", "Xiao", 
                   email = "zhenghao.xiao@mail.utoronto.ca", 
-                  role = c("aut", "cre"),
+                  role = c("aut", "cre"))
 Maintainer: Zhenghao Xiao <zhenghao.xiao@mail.utoronto.ca>
 Description: A focused, user-friendly tool for Nanopore sequencing mutation analysis within R. 
     It offers efficient, accessible workflows from FASTQ file alignment to visualizations.
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.0.0)
-RoxygenNote: 7.2.3
-Roxygen: list(markdown = TRUE)
 Imports: 
     GenomicAlignments,
     Rsubread,
@@ -36,3 +34,4 @@ Suggests:
 VignetteBuilder: knitr
 URL: https://github.com/ZhenghaoXiao/LegitXMut
 BugReports: https://github.com/ZhenghaoXiao/LegitXMut/issues
+Config/testthat/edition: 3

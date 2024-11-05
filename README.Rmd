@@ -116,9 +116,13 @@ The three graphic types that users can select from—"heatmap," "manhattan," and
 confidences of the result, and mutation density across chromosomes.
 
 ![](inst/extdata/workflow.png)
+
 ![](inst/extdata/heatmap.png)
+
 ![](inst/extdata/manhattan.png)
+
 ![](inst/extdata/rainfall.png)
+
 # Contributions
 The author of `LegitXMut` is `Zhenghao Xiao`. The package provides three functions to analyze genetic variation by allowing users to 
 align sequence reads, standardize chromosome names, and visualize mutation patterns in one package.

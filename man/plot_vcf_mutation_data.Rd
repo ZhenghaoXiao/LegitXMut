@@ -48,8 +48,10 @@ genome-specific and mutation-focused visualizations directly from the VCF file.
 }
 \examples{
 # Example 1: Generate a heatmap of variants' frequency across chromosomes
+# Replace with actual test file path
+vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 plot_vcf_mutation_data(
-  vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
+  vcfPath = vcfPath,
   plotType = "heatmap",
   title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
   font_size = 12,
@@ -59,8 +61,10 @@ plot_vcf_mutation_data(
   )
 
 # Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
+# Replace with actual test file path
+vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 plot_vcf_mutation_data(
-  vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
+  vcfPath = vcfPath,
   plotType = "rainfall",
   title = "Rainfall Plot of Mutations",
   color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
@@ -74,8 +78,10 @@ plot_vcf_mutation_data(
 )
 
 # Example 3: Generate a manhattan plot for mutations with modified y-axis label
+# Replace with actual test file path
+vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 plot_vcf_mutation_data(
-  vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
+  vcfPath = vcfPath,
   plotType = "manhattan",
   title = "Manhattan Plot of Variants",
   ylab = "-log10(Supporting Reads)",

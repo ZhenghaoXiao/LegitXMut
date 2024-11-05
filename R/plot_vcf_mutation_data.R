@@ -21,8 +21,10 @@
 #'
 #' @examples
 #' # Example 1: Generate a heatmap of variants' frequency across chromosomes
+#' # Replace with actual test file path
+#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 #' plot_vcf_mutation_data(
-#'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
+#'   vcfPath = vcfPath,
 #'   plotType = "heatmap",
 #'   title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
 #'   font_size = 12,
@@ -32,8 +34,10 @@
 #'   )
 #'
 #' # Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
+#' # Replace with actual test file path
+#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 #' plot_vcf_mutation_data(
-#'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
+#'   vcfPath = vcfPath,
 #'   plotType = "rainfall",
 #'   title = "Rainfall Plot of Mutations",
 #'   color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
@@ -47,8 +51,10 @@
 #' )
 #'
 #' # Example 3: Generate a manhattan plot for mutations with modified y-axis label
+#' # Replace with actual test file path
+#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 #' plot_vcf_mutation_data(
-#'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
+#'   vcfPath = vcfPath,
 #'   plotType = "manhattan",
 #'   title = "Manhattan Plot of Variants",
 #'   ylab = "-log10(Supporting Reads)",
@@ -104,6 +110,7 @@
 plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plot",
                                    color_scheme = NULL, alpha = 0.6, font_size = 10,
                                    xlab = "Position", ylab = "Value", legend_position = "top") {
+
   vcf <- VariantAnnotation::readVcf(vcfPath)
 
   row_ranges <- SummarizedExperiment::rowRanges(vcf)
@@ -124,7 +131,6 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plo
     REF = GenomicRanges::mcols(row_ranges)$REF,
     ALT = GenomicRanges::mcols(row_ranges)$ALT
   )
-
   if (plotType == "heatmap") {
 
     chrom_counts <- as.data.frame(table(seqnames(gr)))
@@ -158,20 +164,19 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plo
     )
   }
   else if (plotType == "manhattan") {
-    vcf_data <- VariantAnnotation::readVcf(vcfPath)
-    info_data <- VariantAnnotation::info(vcf_data)
+    info_data <- VariantAnnotation::info(vcf)
 
     if (!"SR" %in% colnames(info_data)) stop("The 'SR' field is not present in the INFO column.")
     SR_values <- as.numeric(info_data$SR)
     SR_values[is.na(SR_values)] <- 1
 
-    if (length(SR_values) != length(SummarizedExperiment::rowRanges(vcf_data))) {
+    if (length(SR_values) != length(SummarizedExperiment::rowRanges(vcf))) {
       stop("Mismatch in SR values and number of VCF records.")
     }
 
     chrom_data <- data.frame(
-      Chromosome = as.character(seqnames(SummarizedExperiment::rowRanges(vcf_data))),
-      Position = start(SummarizedExperiment::rowRanges(vcf_data)),
+      Chromosome = as.character(seqnames(SummarizedExperiment::rowRanges(vcf))),
+      Position = start(SummarizedExperiment::rowRanges(vcf)),
       SR = SR_values
     )
 

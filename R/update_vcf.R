@@ -10,11 +10,15 @@
 #' @return NULL. A message confirms that the VCF file has been updated and saved.
 #'
 #' @examples
-#' # Example: Update chromosome names in a VCF file using a reference FASTA file/FNA file, replace with local path
+#' # Example: Update chromosome names in a VCF file using a reference FASTA file/FNA file
+#' # Replace with actual test file path
+#' fastaPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna"
+#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf"
+#' outputVcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 #' updatingvcf <- update_vcf(
-#'   fastaPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna",
-#'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf",
-#'   outputVcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+#'   fastaPath = fastaPath,
+#'   vcfPath = vcfPath,
+#'   outputVcfPath = outputVcfPath
 #' )
 #'
 #' @references
@@ -42,7 +46,7 @@
 #' @importFrom VariantAnnotation readVcf writeVcf
 #' @import stringr
 #' @importFrom GenomeInfoDb seqlevels
-update_VCF <- function(fastaPath, vcfPath, outputVcfPath) {
+update_vcf <- function(fastaPath, vcfPath, outputVcfPath) {
 
   chrom_mapping <- list()
   fasta_con <- file(fastaPath, "r")
