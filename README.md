@@ -20,7 +20,8 @@ accessibility of mutation analysis in bioinformatics pipelines.
 `LegitXMut` integrates with widely used bioinformatics tools like
 `Rsubread`, `VariantAnnotation`, `GenomicAlignments`, and others, to
 help users to perform end-to-end genomic variant analysis within
-`ONE PACKAGE` and `THREE FUNCTIONS`.
+`ONE PACKAGE` and `THREE FUNCTIONS`. Users have to change the
+`file paths` to `local paths` for `tests` and `usage`.
 
 This package fills a gap in bioinformatics workflows by allowing direct
 handling of FASTQ, and VCF files for visualization of mutations, which
@@ -49,6 +50,9 @@ library(LegitXMut)
 # Examples
 
 ``` r
+#Users Have to Change The File Paths to Local File Paths
+#For TESTS AND USAGE
+
 #Align a FASTQ file to a reference genome with custom parameters.
 mutateddemoalignment <- alignment_FASTQ(fastqPath =  "~/LegitXMut/inst/extdata/SRR29917898.fastq",
 referencePath =  "~/LegitXMut/inst/extdata/yeast.fna",

@@ -23,7 +23,7 @@ An R Package Designed For Mutation Analysis Directly From FASTQ file to Visualiz
 `LegitXMut` is an R package designed for the analysis of genetic variants, specifically designed for workflows that handle Nanopore sequencing data. 
 The workflow of the package involves aligning sequencing reads, updating chromosome names in VCF files, and visualizing mutation data, which enhance the efficiency and 
 accessibility of mutation analysis in bioinformatics pipelines. `LegitXMut` integrates with widely used bioinformatics tools like `Rsubread`, `VariantAnnotation`, `GenomicAlignments`, 
-and others, to help users to perform end-to-end genomic variant analysis within `ONE PACKAGE` and `THREE FUNCTIONS`.
+and others, to help users to perform end-to-end genomic variant analysis within `ONE PACKAGE` and `THREE FUNCTIONS`. Users have to change the `file paths` to `local paths` for `tests` and `usage`.
 
 This package fills a gap in bioinformatics workflows by allowing direct handling of FASTQ, and VCF files for visualization of mutations, which can aid in exploratory data analysis 
 and the interpretation of mutation patterns across various chromosomes. Unlike many existing tools, `LegitXMut` is uniquely focused on a complete solution from alignment to visualization in `R language`, 
@@ -46,6 +46,9 @@ library(LegitXMut)
 # Examples
 
 ```{r, eval = FALSE}
+#Users Have to Change The File Paths to Local File Paths
+#For TESTS AND USAGE
+
 #Align a FASTQ file to a reference genome with custom parameters.
 mutateddemoalignment <- alignment_FASTQ(fastqPath =  "~/LegitXMut/inst/extdata/SRR29917898.fastq",
 referencePath =  "~/LegitXMut/inst/extdata/yeast.fna",
