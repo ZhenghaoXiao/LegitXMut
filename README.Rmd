@@ -14,12 +14,12 @@ knitr::opts_chunk$set(
 ```
 
 # LegitXMut
-
 <!-- badges: start -->
 <!-- badges: end -->
 An R Package Designed For Mutation Analysis Directly From FASTQ file to Visualization.
 
 # Description
+
 `LegitXMut` is an R package designed for the analysis of genetic variants, specifically designed for workflows that handle Nanopore sequencing data. 
 The workflow of the package involves aligning sequencing reads, updating chromosome names in VCF files, and visualizing mutation data, which enhance the efficiency and 
 accessibility of mutation analysis in bioinformatics pipelines. `LegitXMut` integrates with widely used bioinformatics tools like `Rsubread`, `VariantAnnotation`, `GenomicAlignments`, 
@@ -32,18 +32,20 @@ The `LegitXMut` package was developed using `R version 4.4.1 (June, 2024)`, Plat
 
 # Installation
 
-```{r Installation}
-# Install devtools if you haven't already
+```{r, eval = FALSE}
+# Install devtools if needed
 install.packages("devtools")
-library("devtools")
+library(devtools)
 
 # Install LegitXMut from GitHub with vignettes
-devtools::install_github("<ZhenghaoXiao>/LegitXMut", build_vignettes = TRUE)
-library("LegitXMut")
+devtools::install_github("ZhenghaoXiao/LegitXMut", build_vignettes = TRUE)
+library(LegitXMut)
+
 ```
 
 # Example
-```{r Example}
+
+```{r, eval = FALSE}
 #Align a FASTQ file to a reference genome with custom parameters.
 mutateddemoalignment <- alignment_FASTQ(fastqPath =  "~/LegitXMut/inst/extdata/SRR29917898.fastq",
 referencePath =  "~/LegitXMut/inst/extdata/yeast.fna",
@@ -92,9 +94,10 @@ legend_position = "top"
 )
 ```
 # Overview
+
 The overview of the package:
 
-```{r example}
+```{r, eval = FALSE}
 ls("package:LegitXMut")
 data(package = "LegitXMut") 
 browseVignettes("LegitXMut")
@@ -104,26 +107,68 @@ browseVignettes("LegitXMut")
 - `alignment_FASTQ`:This function creates a `BAM` file and calls variants by aligning a `FASTQ` file to a provided reference genome in `FASTA` format. 
 It allows the setting of maximal indel and mismatch criteria for quality control and optimization. The result `.VCF` file should be input into `update_vcf`
 and `plot_vcf_mutation_data` later on.
+
 -`update_vcf`:This tool updates the chromosome names in a `VCF` file by extracting chromosomal mappings from a reference genome in `FASTA` format. 
 It ensures the workflows that demand multiple chromosome and whole genome analysis by producing a modified `VCF` file with standardized chromosome names.
+
 -`plot_vcf_mutation_data`:This function takes the VCF file generated from update_vcf or users can input external file and uses it to create different mutation visualization graphs. 
 The three graphic types that users can select from—"heatmap," "manhattan," and "rainfall"—each offers distinct viewpoints on mutation data, including inter-variant distances,
 confidences of the result, and mutation density across chromosomes.
+
 ![](inst/extdata/workflow.png)
-
-Heatmap demo
 ![](inst/extdata/heatmap.png)
-Manhatten plot demo
 ![](inst/extdata/manhattan.png)
-Rainfall plot demo
 ![](inst/extdata/rainfall.png)
+# Contributions
+The author of `LegitXMut` is `Zhenghao Xiao`. The package provides three functions to analyze genetic variation by allowing users to 
+align sequence reads, standardize chromosome names, and visualize mutation patterns in one package.
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+`alignment_FASTQ()`: `Rsubread` and `GenomicAlignments` was employed to align a FASTQ file to a reference genome, generating BAM and VCF files
+while allowing quality control through configurable parameters for `indels` and `mismatches`.OpenAI was used for debugging suggestions and potential function 
+suggestions only.
 
-You can also embed plots, for example:
+`update_vcf()`: This function utilizes `VariantAnnotation`, `stringr` and `GenomeInfoDb` to update chromosome names in VCF files according to a reference genome
+fasta file, the updated file will used for visualizations.OpenAI was used for debugging suggestions and potential function suggestions only..
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
+`plot_vcf_mutation_data()`: This function was requires `VariantAnnotation`, `GenomicRanges`,  `ggplot2`, `ComplexHeatmap`, `SummarizedExperiment`, `dplyr`, `stats`, and `circlize`.
+Using a variety of plot patterns ("heatmap," "manhattan," and "rainfall"), this tool visualizes mutation data from VCF files to help with understanding chromosome-to-chromosome inter-variant distances, 
+mutation frequency density, and distribution.OpenAI was used for debugging suggestions and potential function suggestions only.
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+# References
+
+1.Gu, Z. et al. “circlize Implements and Enhances Circular Visualization in R.” Bioinformatics, vol. 30, no. 19, 2014, pp. 2811–2812. doi:10.1093/bioinformatics/btu393.
+
+2.Gu, Zuguang, Roland Eils, and Matthias Schlesner. "Complex Heatmaps Reveal Patterns and Correlations in Multidimensional Genomic Data." Bioinformatics, vol. 32, no. 18, 2016, pp. 2847–2849. https://doi.org/10.1093/bioinformatics/btw313.
+
+3.Lawrence, Michael, et al. "Software for Computing and Annotating Genomic Ranges." PLoS Computational Biology, vol. 9, no. 8, 2013, e1003118. https://doi.org/10.1371/journal.pcbi.1003118.
+
+4.Liao, Y., Gordon K. Smyth, and Wei Shi. “The R Package Rsubread is Easier, Faster, Cheaper and Better for Alignment and Quantification of RNA Sequencing Reads.” Nucleic Acids Research, vol. 47, no. 8, 2019, e47. doi:10.1093/nar/gkz114. Available at: https://academic.oup.com/nar/article/47/8/e47/5371636.
+
+5.Morgan, M., P. Aboyoun, R. Gentleman, M. Lawrence, and H. Pages. “GenomicAlignments: Efficient Alignments Processing in R for NGS Data.” Bioconductor, 2019, doi:10.18129/B9.bioc.GenomicAlignments. Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
+
+6.Morgan, Martin, Vincent Obenchain, James Hester, and Hervé Pagès. SummarizedExperiment: Summarized Experiment Container. R package version 1.28.0, Bioconductor, 2022, https://bioconductor.org/packages/SummarizedExperiment.
+
+7.National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2). NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
+
+8.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
+
+9.OpenAI. ChatGPT: Assistance with R Function Development for Bioinformatics Applications, "LegitxMut". https://chat.openai.com. Accessed 5 Nov. 2024.
+
+10.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence. GenomeInfoDb: Utilities for Manipulating Chromosome Names, Including Modifying the Names to Follow a Particular Convention. R package version 1.36.0, Bioconductor, 2023, https://bioconductor.org/packages/GenomeInfoDb.
+
+11.R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, 2024, Vienna, Austria, https://www.R-project.org/.
+
+12.Silva, Anjali. TestingPackage. GitHub, https://github.com/anjalisilva/TestingPackage. Accessed 5 Nov. 2024.
+
+13.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, 2016, https://ggplot2.tidyverse.org.
+
+14.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R package version 1.1.2, 2023, https://CRAN.R-project.org/package=dplyr.
+
+15.Wickham, H. stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0, 2019, https://CRAN.R-project.org/package=stringr.
+
+# Acknowledgements
+This package was developed as part of an assessment for 2024
+BCB410H: Applied Bioinformatics course at the University of
+Toronto, Toronto, CANADA. <LegitXMut> welcomes issues,
+enhancement requests, and other contributions. To submit an issue,
+use the GitHub issues.
