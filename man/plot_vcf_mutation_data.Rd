@@ -117,8 +117,6 @@ SummarizedExperiment: Summarized Experiment Container. R package version 1.28.0,
 
 R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria, 2024, https://www.R-project.org/.
 
-R Core Team. R: A language and environment for statistical computing. R Foundation for Statistical Computing, 2024, https://www.R-project.org/.
-
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
 }

@@ -33,11 +33,11 @@ This function is suitable for handling large sequencing datasets and supports
 alignment of Nanopore reads and quality control.
 }
 \examples{
-# Example 1: Align a FASTQ file to a reference genome with custom parameters.
+\dontrun{# Example 1: Align a FASTQ file to a reference genome with custom parameters.
 mutateddemoalignment <- alignment_FASTQ(fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR29917898.fastq",
 referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna",
 outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam")
-
+}
 }
 \references{
 Morgan M, Lawrence M, Aboyoun P, Gentleman R, and Pages H (2019).

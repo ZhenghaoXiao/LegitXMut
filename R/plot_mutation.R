@@ -89,15 +89,14 @@
 #'
 #' R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria, 2024, https://www.R-project.org/.
 #'
-#' R Core Team. R: A language and environment for statistical computing. R Foundation for Statistical Computing, 2024, https://www.R-project.org/.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 #' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
 #'
 #' @export
-#' @importFrom VariantAnnotation readVcf ref alt
+#' @importFrom VariantAnnotation readVcf ref alt info
 #' @import circlize
-#' @importFrom GenomicRanges seqnames ranges start GRanges
+#' @importFrom GenomicRanges seqnames ranges start GRanges mcols
 #' @import ggplot2
 #' @import ComplexHeatmap
 #' @importFrom SummarizedExperiment rowRanges
@@ -106,7 +105,6 @@
 plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plot",
                                    color_scheme = NULL, alpha = 0.6, font_size = 10,
                                    xlab = "Position", ylab = "Value", legend_position = "top") {
-  utils::globalVariables(c("Chromosome", "Distance", "Mutation_Type", "SR", "rowRanges", "median"))
   vcf <- VariantAnnotation::readVcf(vcfPath)
 
   row_ranges <- SummarizedExperiment::rowRanges(vcf)
@@ -124,8 +122,8 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plo
     seqnames = seqnames,
     ranges = ranges,
     strand = "*",
-    REF = mcols(row_ranges)$REF,
-    ALT = mcols(row_ranges)$ALT
+    REF = GenomicRanges::mcols(row_ranges)$REF,
+    ALT = GenomicRanges::mcols(row_ranges)$ALT
   )
 
   if (plotType == "heatmap") {
@@ -162,7 +160,7 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plo
   }
   else if (plotType == "manhattan") {
     vcf_data <- VariantAnnotation::readVcf(vcfPath)
-    info_data <- info(vcf_data)
+    info_data <- VariantAnnotation::info(vcf_data)
 
     if (!"SR" %in% colnames(info_data)) stop("The 'SR' field is not present in the INFO column.")
     SR_values <- as.numeric(info_data$SR)
