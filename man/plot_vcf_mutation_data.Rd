@@ -6,20 +6,37 @@
 \usage{
 plot_vcf_mutation_data(
   vcfPath,
-  plotType = "karyogram",
-  species = "hg38",
-  title = "Plot"
+  plotType = "manhattan",
+  title = "Plot",
+  color_scheme = NULL,
+  alpha = 0.6,
+  font_size = 10,
+  xlab = "Position",
+  ylab = "Value",
+  legend_position = "top"
 )
 }
 \arguments{
-\item{vcfPath}{A character string specifying the path to the VCF file.}
+\item{vcfPath}{A character string specifying the path to the updated VCF file.}
 
 \item{plotType}{A character string specifying the type of plot to generate.
-Options are "karyogram" (karyogram of variants), "density" (variant density along chromosomes),
-"lollipop" (lollipop plot for specific genes), or "circos" (circular genome plot).}
+Options are "heatmap" (heatmap of variants across chromosomes), "manhattan" (variant distribution),
+or "rainfall" (distance between variants).}
 
-\item{gene}{A character string specifying the gene name for the lollipop plot.
-Required if \code{plotType} is "lollipop".}
+\item{title}{A character string specifying the title of the plot.}
+
+\item{color_scheme}{A named vector of colors for different mutation types or heatmap scale.
+Default colors are provided, but users can customize for "heatmap" or "rainfall".}
+
+\item{alpha}{A numeric value between 0 and 1 to set the transparency of points in plots (default is 0.6).}
+
+\item{font_size}{A numeric value for the font size of plot labels and titles (default is 10).}
+
+\item{xlab}{A character string for the x-axis label (default is "Position").}
+
+\item{ylab}{A character string for the y-axis label, which varies by plot type.}
+
+\item{legend_position}{A character string specifying the legend position ("top", "bottom", "left", "right").}
 }
 \value{
 A plot visualizing mutation information based on the selected plot type.
@@ -30,30 +47,42 @@ including karyograms, density plots, lollipop plots, and circos plots. It provid
 genome-specific and mutation-focused visualizations directly from the VCF file.
 }
 \examples{
-# Example 1: Generate a karyogram of variants
+# Example 1: Generate a heatmap of variants' frequency across chromosomes
 plot_vcf_mutation_data(
   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-  plotType = "karyogram"
-)
+  plotType = "heatmap",
+  title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
+  font_size = 12,
+  xlab = "Chromosome",
+  ylab = "Mutation Frequency",
+  legend_position = "bottom"
+  )
 
-# Example 2: Generate a heatmap of variants' frequency across chromosomes
+# Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
 plot_vcf_mutation_data(
   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-  plotType = "density"
+  plotType = "rainfall",
+  title = "Rainfall Plot of Mutations",
+  color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
+                   "T>A" = "yellow", "T>C" = "blue", "T>G" = "purple",
+                   "indel" = "grey"),
+  alpha = 0.7,
+  font_size = 10,
+  xlab = "Genomic Position",
+  ylab = "Inter-Variant Distance (log10)",
+  legend_position = "right"
 )
 
-# Example 3: Generate a manhattan plot for mutations in the TP53 gene
+# Example 3: Generate a manhattan plot for mutations with modified y-axis label
 plot_vcf_mutation_data(
   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
   plotType = "manhattan",
-  title = "Manhattan Plot of Mutations in TP53 Gene on chromosome 17"
-)
-
-# Example 4: Generate a circular plot of whole-genome mutations
-plot_vcf_mutation_data(
-  vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-  plotType = "circos"
-  title = "Circos Plot of Whole-Genome Variants"
+  title = "Manhattan Plot of Variants",
+  ylab = "-log10(Supporting Reads)",
+  xlab = "Genomic Position",
+  font_size = 11,
+  alpha = 0.6,
+  legend_position = "top"
 )
 
 }
@@ -62,12 +91,33 @@ Morgan M, Pages H, Obenchain V, and Hayden N (2020).
 “VariantAnnotation: annotation of genetic variants.”
 Bioconductor. doi:10.18129/B9.bioc.VariantAnnotation. Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 
-Wang, L. et al. (2017). “trackViewer: a Bioconductor package for interactive
-and integrative visualization of multi-omics data.”
-BMC Bioinformatics 18, 124. doi:10.1186/s12859-017-1542-4.
+National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
+NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
+
+National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898.
+NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 
 Gu, Z. et al. (2014). “circlize implements and enhances circular visualization in R.”
 Bioinformatics, 30(19), 2811–2812. doi:10.1093/bioinformatics/btu393.
+
+Lawrence, Michael, et al. "Software for computing and annotating genomic ranges.“
+PLoS Computational Biology, vol. 9, no. 8, 2013, e1003118. https://doi.org/10.1371/journal.pcbi.1003118.
+
+Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, 2016. https://ggplot2.tidyverse.org.
+
+Gu, Zuguang, Eils, Roland, and Schlesner, Matthias.
+"Complex heatmaps reveal patterns and correlations in multidimensional genomic data."
+Bioinformatics, vol. 32, no. 18, 2016, pp. 2847–2849. https://doi.org/10.1093/bioinformatics/btw313.
+
+Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation.
+R package version 1.1.2, 2023, https://CRAN.R-project.org/package=dplyr.
+
+Morgan, Martin, Vincent Obenchain, James Hester, and Hervé Pagès.
+SummarizedExperiment: Summarized Experiment Container. R package version 1.28.0, Bioconductor, 2022, https://bioconductor.org/packages/SummarizedExperiment.
+
+R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria, 2024, https://www.R-project.org/.
+
+R Core Team. R: A language and environment for statistical computing. R Foundation for Statistical Computing, 2024, https://www.R-project.org/.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).

@@ -4,40 +4,58 @@
 #' including karyograms, density plots, lollipop plots, and circos plots. It provides
 #' genome-specific and mutation-focused visualizations directly from the VCF file.
 #'
-#' @param vcfPath A character string specifying the path to the VCF file.
+#' @param vcfPath A character string specifying the path to the updated VCF file.
 #' @param plotType A character string specifying the type of plot to generate.
-#'    Options are "karyogram" (karyogram of variants), "density" (variant density along chromosomes),
-#'    "lollipop" (lollipop plot for specific genes), or "circos" (circular genome plot).
-#' @param gene A character string specifying the gene name for the lollipop plot.
-#'    Required if `plotType` is "lollipop".
+#'    Options are "heatmap" (heatmap of variants across chromosomes), "manhattan" (variant distribution),
+#'    or "rainfall" (distance between variants).
+#' @param title A character string specifying the title of the plot.
+#' @param color_scheme A named vector of colors for different mutation types or heatmap scale.
+#'    Default colors are provided, but users can customize for "heatmap" or "rainfall".
+#' @param alpha A numeric value between 0 and 1 to set the transparency of points in plots (default is 0.6).
+#' @param font_size A numeric value for the font size of plot labels and titles (default is 10).
+#' @param xlab A character string for the x-axis label (default is "Position").
+#' @param ylab A character string for the y-axis label, which varies by plot type.
+#' @param legend_position A character string specifying the legend position ("top", "bottom", "left", "right").
 #'
 #' @return A plot visualizing mutation information based on the selected plot type.
 #'
 #' @examples
-#' # Example 1: Generate a karyogram of variants
+#' # Example 1: Generate a heatmap of variants' frequency across chromosomes
 #' plot_vcf_mutation_data(
 #'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-#'   plotType = "karyogram"
-#' )
+#'   plotType = "heatmap",
+#'   title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
+#'   font_size = 12,
+#'   xlab = "Chromosome",
+#'   ylab = "Mutation Frequency",
+#'   legend_position = "bottom"
+#'   )
 #'
-#' # Example 2: Generate a heatmap of variants' frequency across chromosomes
+#' # Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
 #' plot_vcf_mutation_data(
 #'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-#'   plotType = "density"
+#'   plotType = "rainfall",
+#'   title = "Rainfall Plot of Mutations",
+#'   color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
+#'                    "T>A" = "yellow", "T>C" = "blue", "T>G" = "purple",
+#'                    "indel" = "grey"),
+#'   alpha = 0.7,
+#'   font_size = 10,
+#'   xlab = "Genomic Position",
+#'   ylab = "Inter-Variant Distance (log10)",
+#'   legend_position = "right"
 #' )
 #'
-#' # Example 3: Generate a manhattan plot for mutations in the TP53 gene
+#' # Example 3: Generate a manhattan plot for mutations with modified y-axis label
 #' plot_vcf_mutation_data(
 #'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
 #'   plotType = "manhattan",
-#'   title = "Manhattan Plot of Mutations in TP53 Gene on chromosome 17"
-#' )
-#'
-#' # Example 4: Generate a circular plot of whole-genome mutations
-#' plot_vcf_mutation_data(
-#'   vcfPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf",
-#'   plotType = "circos"
-#'   title = "Circos Plot of Whole-Genome Variants"
+#'   title = "Manhattan Plot of Variants",
+#'   ylab = "-log10(Supporting Reads)",
+#'   xlab = "Genomic Position",
+#'   font_size = 11,
+#'   alpha = 0.6,
+#'   legend_position = "top"
 #' )
 #'
 #' @references
@@ -45,41 +63,63 @@
 #' “VariantAnnotation: annotation of genetic variants.”
 #' Bioconductor. doi:10.18129/B9.bioc.VariantAnnotation. Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 #'
-#' Wang, L. et al. (2017). “trackViewer: a Bioconductor package for interactive
-#' and integrative visualization of multi-omics data.”
-#' BMC Bioinformatics 18, 124. doi:10.1186/s12859-017-1542-4.
+#' National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
+#' NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
+#'
+#' National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898.
+#' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 #'
 #' Gu, Z. et al. (2014). “circlize implements and enhances circular visualization in R.”
 #' Bioinformatics, 30(19), 2811–2812. doi:10.1093/bioinformatics/btu393.
+#'
+#' Lawrence, Michael, et al. "Software for computing and annotating genomic ranges.“
+#' PLoS Computational Biology, vol. 9, no. 8, 2013, e1003118. https://doi.org/10.1371/journal.pcbi.1003118.
+#'
+#' Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, 2016. https://ggplot2.tidyverse.org.
+#'
+#' Gu, Zuguang, Eils, Roland, and Schlesner, Matthias.
+#' "Complex heatmaps reveal patterns and correlations in multidimensional genomic data."
+#' Bioinformatics, vol. 32, no. 18, 2016, pp. 2847–2849. https://doi.org/10.1093/bioinformatics/btw313.
+#'
+#' Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation.
+#' R package version 1.1.2, 2023, https://CRAN.R-project.org/package=dplyr.
+#'
+#' Morgan, Martin, Vincent Obenchain, James Hester, and Hervé Pagès.
+#' SummarizedExperiment: Summarized Experiment Container. R package version 1.28.0, Bioconductor, 2022, https://bioconductor.org/packages/SummarizedExperiment.
+#'
+#' R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria, 2024, https://www.R-project.org/.
+#'
+#' R Core Team. R: A language and environment for statistical computing. R Foundation for Statistical Computing, 2024, https://www.R-project.org/.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 #' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
 #'
 #' @export
-#' @import VariantAnnotation
+#' @importFrom VariantAnnotation readVcf ref alt
 #' @import circlize
-#' @import GenomicRanges
+#' @importFrom GenomicRanges seqnames ranges start GRanges
 #' @import ggplot2
 #' @import ComplexHeatmap
-plot_vcf_mutation_data <- function(vcfPath, plotType = "karyogram", species = "hg38", title = "Plot") {
-  # Load the VCF file
-  vcf <- VariantAnnotation::readVcf(vcfPath, genome = "hg38")
+#' @importFrom SummarizedExperiment rowRanges
+#' @importFrom dplyr lag
+#' @importFrom stats median
+plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plot",
+                                   color_scheme = NULL, alpha = 0.6, font_size = 10,
+                                   xlab = "Position", ylab = "Value", legend_position = "top") {
+  utils::globalVariables(c("Chromosome", "Distance", "Mutation_Type", "SR", "rowRanges", "median"))
+  vcf <- VariantAnnotation::readVcf(vcfPath)
 
-  # Extract row ranges as individual components
   row_ranges <- SummarizedExperiment::rowRanges(vcf)
-
-  # Convert seqnames to character and ensure it matches length of ranges
   seqnames <- as.character(GenomicRanges::seqnames(row_ranges))
   ranges <- GenomicRanges::ranges(row_ranges)
+  positions <- GenomicRanges::start(row_ranges)
 
-  # Check and adjust seqnames length if necessary
   if (length(seqnames) == 1 && length(ranges) > 1) {
     seqnames <- rep(seqnames, length(ranges))
   } else if (length(seqnames) != length(ranges)) {
     stop("Length of 'seqnames' does not match the number of ranges.")
   }
 
-  # Construct GRanges using validated seqnames and ranges
   gr <- GenomicRanges::GRanges(
     seqnames = seqnames,
     ranges = ranges,
@@ -89,124 +129,103 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "karyogram", species = "h
   )
 
   if (plotType == "heatmap") {
+
     chrom_counts <- as.data.frame(table(seqnames(gr)))
     colnames(chrom_counts) <- c("Chromosome", "Mutation_Count")
+    chrom_counts <- chrom_counts[order(-chrom_counts$Mutation_Count), ]
 
     mutation_matrix <- as.matrix(chrom_counts["Mutation_Count"])
     rownames(mutation_matrix) <- chrom_counts$Chromosome
 
-    if (length(unique(mutation_matrix)) == 1) {
-      warning("Only one unique mutation count present. Adjusting color scale for single value.")
-      mutation_matrix <- cbind(mutation_matrix, mutation_matrix + 0.01)
-      colnames(mutation_matrix) <- c("Mutation_Count", "Adjusted_Value")
+    col_fun <- if (is.null(color_scheme)) {
+      circlize::colorRamp2(breaks = c(min(mutation_matrix), max(mutation_matrix)),
+                           colors = c("white", "darkred"))
+    } else {
+      color_scheme
     }
 
-    annotation_row <- data.frame(
-      Group = ifelse(mutation_matrix[, 1] > median(mutation_matrix[, 1]), "High Mutation", "Low Mutation")
-    )
+    annotation_row <- data.frame(Group = ifelse(mutation_matrix[, 1] > stats::median(mutation_matrix[, 1]),
+                                                "High Mutation", "Low Mutation"))
     rownames(annotation_row) <- rownames(mutation_matrix)
 
-    annotation_colors <- list(
-      Group = c("High Mutation" = "darkgreen", "Low Mutation" = "purple")
-    )
+    annotation_colors <- list(Group = c("High Mutation" = "darkgreen", "Low Mutation" = "purple"))
 
-    col_fun <- circlize::colorRamp2(
-      breaks = c(min(mutation_matrix), max(mutation_matrix)),
-      colors = c("white", "red")
-    )
-
-    row_ha <- ComplexHeatmap::rowAnnotation(
-      Group = annotation_row$Group,
-      col = annotation_colors
-    )
-
-    ComplexHeatmap::Heatmap(
-      mutation_matrix,
-      name = "Mutation Count",
-      col = col_fun,
-      cluster_rows = nrow(mutation_matrix) > 1,
-      cluster_columns = FALSE,
-      row_names_side = "left",
-      column_names_side = "top",
-      row_title = "Chromosomes",
-      column_title = title,
-      show_row_dend = nrow(mutation_matrix) > 1,
-      row_names_gp = grid::gpar(fontsize = 10),
-      column_names_gp = grid::gpar(fontsize = 10, rot = 45),
-      left_annotation = row_ha,
-      heatmap_legend_param = list(
-        title = "Mutation Count",
-        at = c(min(mutation_matrix), max(mutation_matrix)),
-        labels = c("Low", "High")
-      )
+    ComplexHeatmap::Heatmap(mutation_matrix, name = "Mutation Count", col = col_fun,
+                            cluster_rows = FALSE, cluster_columns = FALSE,
+                            show_row_names = TRUE, show_column_names = FALSE,
+                            row_title = "Chromosomes (High to Low Density)",
+                            column_title = title, row_names_gp = grid::gpar(fontsize = font_size),
+                            left_annotation = ComplexHeatmap::rowAnnotation(Group = annotation_row$Group, col = annotation_colors),
+                            heatmap_legend_param = list(title = "Mutation Count", at = c(min(mutation_matrix), max(mutation_matrix)),
+                            labels = c("Low", "High"))
     )
   }
   else if (plotType == "manhattan") {
-
-    vcf_data <- VariantAnnotation::readVcf(vcfPath, genome = "hg38")
-
+    vcf_data <- VariantAnnotation::readVcf(vcfPath)
     info_data <- info(vcf_data)
 
-    if ("SR" %in% colnames(info_data)) {
-      SR_values <- as.numeric(info_data$SR)
-    } else {
-      stop("The 'SR' field is not present in the INFO column. Ensure the VCF has SR values.")
-    }
-
+    if (!"SR" %in% colnames(info_data)) stop("The 'SR' field is not present in the INFO column.")
+    SR_values <- as.numeric(info_data$SR)
     SR_values[is.na(SR_values)] <- 1
 
-    if (length(SR_values) != length(rowRanges(vcf_data))) {
+    if (length(SR_values) != length(SummarizedExperiment::rowRanges(vcf_data))) {
       stop("Mismatch in SR values and number of VCF records.")
     }
 
     chrom_data <- data.frame(
-      Chromosome = as.character(seqnames(rowRanges(vcf_data))),
-      Position = start(rowRanges(vcf_data)),
+      Chromosome = as.character(seqnames(SummarizedExperiment::rowRanges(vcf_data))),
+      Position = start(SummarizedExperiment::rowRanges(vcf_data)),
       SR = SR_values
     )
 
     p <- ggplot2::ggplot(chrom_data, aes(x = Position, y = -log10(SR), color = Chromosome)) +
-      ggplot2::geom_point(alpha = 0.6) +
+      ggplot2::geom_point(alpha = alpha) +
       ggplot2::facet_wrap(~ Chromosome, scales = "free_x") +
-      ggplot2::labs(title = title, x = "Position", y = "-log10") +
-      ggplot2::theme_minimal()
+      ggplot2::labs(title = title, x = xlab, y = ylab) +
+      ggplot2::theme_minimal() +
+      ggplot2::theme(legend.position = legend_position, text = element_text(size = font_size))
     print(p)
-  }
-  else if (plotType == "circos") {
-    chrom_data <- as.data.frame(gr)
+   }
+  else if (plotType == "rainfall") {
 
-    circlize::circos.clear()
+    ref_alleles <- as.character(VariantAnnotation::ref(vcf))
+    alt_alleles <- as.character(unlist(VariantAnnotation::alt(vcf)))
+    variant_data <- data.frame(Chromosome = as.character(seqnames(row_ranges)),
+                               Position = positions, REF = ref_alleles, ALT = alt_alleles)
 
-    circlize::circos.initializeWithIdeogram(
-      species = species,
-      plotType = c("ideogram", "labels")
+    variant_data$Mutation_Type <- paste(variant_data$REF, ">", variant_data$ALT, sep = "")
+    variant_data <- variant_data[order(variant_data$Chromosome, variant_data$Position), ]
+    variant_data$Distance <- c(NA, diff(variant_data$Position))
+    variant_data$Distance[variant_data$Chromosome != dplyr::lag(variant_data$Chromosome)] <- NA
+    variant_data <- variant_data[!is.na(variant_data$Distance) & variant_data$Distance > 0, ]
+
+    mutation_colors <- if (is.null(color_scheme)) {
+      c("C>A" = "red", "C>G" = "orange", "C>T" = "green", "T>A" = "yellow",
+        "T>C" = "blue", "T>G" = "purple", "indel" = "grey")
+    } else {
+      color_scheme
+    }
+
+    variant_data$Mutation_Type <- ifelse(
+      nchar(variant_data$REF) > 1 | nchar(variant_data$ALT) > 1,
+      "indel",
+      variant_data$Mutation_Type
     )
 
-    circlize::circos.track(
-      factors = chrom_data$seqnames,
-      x = chrom_data$start,
-      y = chrom_data$start,
-      panel.fun = function(x, y) {
-        circos.points(x, y, col = "blue", pch = 20, cex = 0.5)
-      },
-      track.height = 0.1
-    )
+    p <- ggplot2::ggplot(variant_data, aes(x = Position, y = Distance, color = Mutation_Type)) +
+      ggplot2::geom_point(alpha = alpha) +
+      ggplot2::scale_y_log10() + # Log scale for distance
+      ggplot2::scale_color_manual(values = mutation_colors) + # Assign colors
+      ggplot2::labs(title = title, x = xlab, y = ylab) +
+      ggplot2::facet_wrap(~ Chromosome, scales = "free_x") +
+      ggplot2::theme_minimal() +
+      ggplot2::theme(legend.position = legend_position,
+                     text = element_text(size = font_size)) +
+      ggplot2::guides(color = guide_legend(title = "Mutation Type"))
 
-    circlize::circos.track(
-      factors = chrom_data$seqnames,
-      x = chrom_data$start,
-      y = chrom_data$start,
-      panel.fun = function(x, y) {
-        circos.rect(xleft = x, xright = x + 1, ybottom = 0, ytop = 1, col = "red", border = NA)
-      },
-      track.height = 0.1,
-      bg.col = "gray90"
-    )
-
-    title(title)
-
+    print(p)
   } else {
-    stop("Invalid plot type. Choose from 'karyogram', 'heatmap', 'manhattan', or 'circos'.")
+    stop("Invalid plot type. Choose from 'heatmap', 'manhattan', or 'rainfall'.")
   }
 }
 

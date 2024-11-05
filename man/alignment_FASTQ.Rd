@@ -2,7 +2,7 @@
 % Please edit documentation in R/alignment_FASTQ.R
 \name{alignment_FASTQ}
 \alias{alignment_FASTQ}
-\title{Aligns FASTQ File to Reference Genome and Produces a BAM File, a VCF file and a summary.}
+\title{Aligns FASTQ File to Reference Genome and Produces a BAM File, a VCF File and a Summary}
 \usage{
 alignment_FASTQ(
   fastqPath,
@@ -24,7 +24,7 @@ alignment_FASTQ(
 \item{outputBAM}{A character string for the name of the output BAM file. Default is "output.bam".}
 }
 \value{
-An object containing alignment information from the BAM file,
+An object containing alignment information from the BAM file and information of variant calling from VCF file,
 which can be used for downstream analysis, including variant calling and visualization.
 }
 \description{
@@ -34,13 +34,9 @@ alignment of Nanopore reads and quality control.
 }
 \examples{
 # Example 1: Align a FASTQ file to a reference genome with custom parameters.
-alignmentResult <- alignment_FASTQ(
-  fastqPath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR12810518.fastq",
-  referencePath = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/sequence_demo_ref.fasta",
-  indels = 5,
-  maxMismatches = 500,
-  outputBAM = "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
-)
+mutateddemoalignment <- alignment_FASTQ(fastqPath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR29917898.fastq",
+referencePath =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna",
+outputBAM =  "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam")
 
 }
 \references{
@@ -53,12 +49,11 @@ and better for alignment and quantification of RNA sequencing reads.”
 Nucleic Acids Research, 47, e47. doi:10.1093/nar/gkz114.
 Available at: https://academic.oup.com/nar/article/47/8/e47/5371636.
 
-NCBI. TP53 gene (Gene ID: 7157), Homo sapiens (human). NCBI Gene Database.
-National Center for Biotechnology Information (NCBI).
-Available at: https://www.ncbi.nlm.nih.gov/gene/7157. Accessed on: October 31, 2024.
+National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
+NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
 
-NCBI. Trace Archive, Run Browser for SRR4000542. National Center for Biotechnology Information (NCBI).
-Available at: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR12810518&display=metadata. Accessed on: October 31, 2024.
+National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898.
+NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 "Assignment". https://chat.openai.com (2023, accessed 5 November 2024).
