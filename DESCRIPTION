@@ -1,22 +1,18 @@
 Package: LegitXMut
 Type: Package
-Title: LegitXMut is designed to handle Nanopore sequencing data in order to perform sequence alignments,
- identify/filter mutation and genomics characteristics, data quality control,
- and calculate&summarize error rates, this package also includes methods for 
- creating comprehensive summary tables and visualizing error distributions and mutation patterns
+Title: An R Package Designed for Mutation Analysis Directly from FASTQ File to Visualization
 Version: 0.1.0
 Authors@R: person("Zhenghao", "Xiao", 
                   email = "zhenghao.xiao@mail.utoronto.ca", 
                   role = c("aut", "cre"),
-                  comment = c(ORCID = "0000-0001-9292-1920"))
 Maintainer: Zhenghao Xiao <zhenghao.xiao@mail.utoronto.ca>
-Description: Illustrate required and optional components of an 
-     R package as per guidelines of BCB410H: Applied Bioinformatics.
+Description: A focused, user-friendly tool for Nanopore sequencing mutation analysis within R. 
+    It offers efficient, accessible workflows from FASTQ file alignment to visualizations.
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.0.0)
-biocViews:
-Remotes: github::hadley/ggplot2
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
 Imports: 
     GenomicAlignments,
     Rsubread,
@@ -34,7 +30,8 @@ License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
-    testthat,
+    testthat (>= 3.0.0),
+    rmarkdown,
     knitr
 VignetteBuilder: knitr
 URL: https://github.com/ZhenghaoXiao/LegitXMut
