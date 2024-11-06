@@ -54,7 +54,7 @@ This function supports for quality control during alignment by manipulating
 indels and maxMismatches parameters.
 
 More information about *alignment_FASTQ* function can be found using `?`
-```{r, }
+```{r, eval = FALSE}
 library(LegitXMut)
 
 # Specify paths, the sample data are stored in the inst/extdata/
@@ -75,7 +75,7 @@ View(mutateddemoalignment)
 
 ###Update Chromosome Names to VCF File
 The update_vcf function uses the reference FASTA file to update the chromosomal names in a VCF file.
-```{r, }
+```{r, eval = FALSE}
 library(LegitXMut)
 # Define paths
 fastaPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna"
@@ -90,7 +90,7 @@ updatedvcf <- update_vcf(fastaPath, vcfPath, outputVcfPath)
 ###Visualizing Mutation Data
 Input mutation data from a VCF file, plot_vcf_mutation_data creates various types of visualizations,
 including heatmaps, Manhattan plots, and rainfall plots.
-```{r, }
+```{r, eval = FALSE}
 library(LegitXMut)
 # Define path
 vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
