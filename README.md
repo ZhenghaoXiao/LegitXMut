@@ -75,6 +75,7 @@ ylab = "Mutation Frequency",
 legend_position = "bottom"
 )
 #Generate a rainfall plot of mutations across chromosomes with customized colors
+#Demo data only have insertion-deletion variants of more than one nucleotides, so only indel will be visualized
 plot_vcf_mutation_data(
 vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
 plotType = "rainfall",

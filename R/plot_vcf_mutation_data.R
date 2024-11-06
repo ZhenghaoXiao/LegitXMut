@@ -34,6 +34,8 @@
 #'   )
 #'
 #' # Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
+#' #Demo data only have insertion-deletion variants of more than one nucleotides changes
+#' #Only indel will be visualized
 #' # Replace with actual test file path
 #' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
 #' plot_vcf_mutation_data(

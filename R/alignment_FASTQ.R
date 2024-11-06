@@ -21,6 +21,8 @@
 #' outputBAM <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
 #' mutateddemoalignment <- alignment_FASTQ(fastqPath =  fastqPath,
 #' referencePath =  referencePath,
+#' indels = 10,
+#' maxMismatches = 1000,
 #' outputBAM =  outputBAM)
 #'
 #' @references

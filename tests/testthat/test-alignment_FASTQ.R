@@ -8,7 +8,7 @@ test_that("alignment_FASTQ produces correct BAM output with specific paths", {
   alignment_result <- alignment_FASTQ(
     fastqPath = fastqPath,
     referencePath = referencePath,
-    indels = 10,
+    indels = 1,
     maxMismatches = 1000,
     outputBAM = outputBAM
   )
