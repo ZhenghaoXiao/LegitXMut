@@ -100,7 +100,7 @@ mutation frequency density, and distribution.OpenAI was used for debugging sugge
 
 8.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 
-9.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR27504770. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR27504770&display=download. Accessed 4 Nov. 2024.
+9.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 
 10.OpenAI. ChatGPT: Assistance with R Function Development for Bioinformatics Applications, "LegitxMut". https://chat.openai.com. Accessed 5 Nov. 2024.
 
@@ -174,7 +174,7 @@ font_size = 11,
 alpha = 0.6,
 legend_position = "top"
 )
-#The demonstration of figures below were generated using National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024. These fastq file is not available for the demo data because its file size is too large
+#The demonstration of figures below were generated using National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024. These fastq file is uploaded for the demo data because its file size is too large
 ```
 ![](inst/extdata/heatmap.png)
 

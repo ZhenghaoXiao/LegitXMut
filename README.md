@@ -241,7 +241,7 @@ font_size = 11,
 alpha = 0.6,
 legend_position = "top"
 )
-#The demonstration of figures below were generated using National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024. These fastq file is not available for the demo data because its file size is too large
+#The demonstration of figures below were generated using National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024. These fastq file is uploaded for the demo data because its file size is too large
 ```
 
 ![](inst/extdata/heatmap.png)
