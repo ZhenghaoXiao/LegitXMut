@@ -47,62 +47,6 @@ devtools::install_github("ZhenghaoXiao/LegitXMut", build_vignettes = TRUE)
 library(LegitXMut)
 ```
 
-# Examples
-
-``` r
-#Users Have to Change The File Paths to Local File Paths
-#For TESTS AND USAGE
-
-#Align a FASTQ file to a reference genome with custom parameters.
-mutateddemoalignment <- alignment_FASTQ(fastqPath =  "~/LegitXMut/inst/extdata/SRR29917898.fastq",
-referencePath =  "~/LegitXMut/inst/extdata/yeast.fna",
-outputBAM =  "~/LegitXMut/inst/extdata/aligned_output.bam")
-
-#Update chromosome names in a VCF file using a reference FASTA file/FNA file
-updatingvcf <- update_vcf(
- fastaPath = "~/LegitXMut/inst/extdata/yeast.fna",
- vcfPath = "~/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf",
- outputVcfPath = "~/LegitXMut/inst/extdata/updated.vcf"
- )
-#Generate a heatmap of variants' frequency across chromosomes
-plot_vcf_mutation_data(
-vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
-plotType = "heatmap",
-title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
-font_size = 12,
-xlab = "Chromosome",
-ylab = "Mutation Frequency",
-legend_position = "bottom"
-)
-#Generate a rainfall plot of mutations across chromosomes with customized colors
-#Demo data only have insertion-deletion variants of more than one nucleotides changes
-#Only indel will be visualized
-plot_vcf_mutation_data(
-vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
-plotType = "rainfall",
-title = "Rainfall Plot of Mutations",
-color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
-                    "T>A" = "yellow", "T>C" = "blue", "T>G" = "purple",
-                    "indel" = "grey"),
-alpha = 0.7,
-font_size = 10,
-xlab = "Genomic Position",
-ylab = "Inter-Variant Distance (log10)",
-legend_position = "right"
-)
-#Generate a manhattan plot for mutations with modified y-axis label
-plot_vcf_mutation_data(
-vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
-plotType = "manhattan",
-title = "Manhattan Plot of Variants",
-ylab = "-log10(Supporting Reads)",
-xlab = "Genomic Position",
-font_size = 11,
-alpha = 0.6,
-legend_position = "top"
-)
-```
-
 # Overview
 
 The overview of the package:
@@ -134,12 +78,6 @@ distinct viewpoints on mutation data, including inter-variant distances,
 confidences of the result, and mutation density across chromosomes.
 
 ![](inst/extdata/workflow.png)
-
-![](inst/extdata/heatmap.png)
-
-![](inst/extdata/manhattan.png)
-
-![](inst/extdata/rainfall.png)
 
 # Contributions
 
@@ -244,3 +182,65 @@ This package was developed as part of an assessment for 2024 BCB410H:
 Applied Bioinformatics course at the University of Toronto, Toronto,
 CANADA. <LegitXMut> welcomes issues, enhancement requests, and other
 contributions. To submit an issue, use the GitHub issues.
+
+# Examples
+
+``` r
+#Users Have to Change The File Paths to Local File Paths
+#For TESTS AND USAGE
+
+#Align a FASTQ file to a reference genome with custom parameters.
+mutateddemoalignment <- alignment_FASTQ(fastqPath =  "~/LegitXMut/inst/extdata/SRR29917898.fastq",
+referencePath =  "~/LegitXMut/inst/extdata/yeast.fna",
+outputBAM =  "~/LegitXMut/inst/extdata/aligned_output.bam")
+
+#Update chromosome names in a VCF file using a reference FASTA file/FNA file
+updatingvcf <- update_vcf(
+ fastaPath = "~/LegitXMut/inst/extdata/yeast.fna",
+ vcfPath = "~/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf",
+ outputVcfPath = "~/LegitXMut/inst/extdata/updated.vcf"
+ )
+#Generate a heatmap of variants' frequency across chromosomes
+plot_vcf_mutation_data(
+vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
+plotType = "heatmap",
+title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
+font_size = 12,
+xlab = "Chromosome",
+ylab = "Mutation Frequency",
+legend_position = "bottom"
+)
+#Generate a rainfall plot of mutations across chromosomes with customized colors
+#Demo data only have insertion-deletion variants of more than one nucleotides changes
+#Only indel will be visualized
+plot_vcf_mutation_data(
+vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
+plotType = "rainfall",
+title = "Rainfall Plot of Mutations",
+color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
+                    "T>A" = "yellow", "T>C" = "blue", "T>G" = "purple",
+                    "indel" = "grey"),
+alpha = 0.7,
+font_size = 10,
+xlab = "Genomic Position",
+ylab = "Inter-Variant Distance (log10)",
+legend_position = "right"
+)
+#Generate a manhattan plot for mutations with modified y-axis label
+plot_vcf_mutation_data(
+vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
+plotType = "manhattan",
+title = "Manhattan Plot of Variants",
+ylab = "-log10(Supporting Reads)",
+xlab = "Genomic Position",
+font_size = 11,
+alpha = 0.6,
+legend_position = "top"
+)
+```
+
+![](inst/extdata/heatmap.png)
+
+![](inst/extdata/manhattan.png)
+
+![](inst/extdata/rainfall.png)
