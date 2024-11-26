@@ -1,5 +1,4 @@
 library(LegitXMut)
-library(testthat)
 test_that("plot_vcf_mutation_data generates a heatmap without errors", {
   vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut") # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")

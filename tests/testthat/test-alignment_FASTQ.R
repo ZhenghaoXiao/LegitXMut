@@ -1,5 +1,4 @@
 library(LegitXMut)
-library(testthat)
 test_that("alignment_FASTQ produces correct BAM output with specific paths", {
   # Define the file paths
   fastqPath <- system.file("extdata", "SRR29917898.fastq", package = "LegitXMut") # Use system.file to find packaged test data

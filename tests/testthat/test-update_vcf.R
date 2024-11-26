@@ -1,5 +1,4 @@
 library(LegitXMut)
-library(testthat)
 test_that("update_vcf correctly updates chromosome names in VCF file", {
   # Use system.file to locate the packaged test data
   fastaPath <- system.file("extdata", "yeast.fna", package = "LegitXMut") # Reference genome path
