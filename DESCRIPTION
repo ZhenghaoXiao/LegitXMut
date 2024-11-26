@@ -23,16 +23,25 @@ Imports:
     SummarizedExperiment,
     stats,
     GenomeInfoDb,
-    dplyr,
-    biocViews
+    dplyr
 License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
+    BiocManager,
     testthat (>= 3.0.0),
     rmarkdown,
     knitr
+Remotes: 
+    Bioconductor/GenomicAlignments,
+    Bioconductor/Rsubread,
+    Bioconductor/VariantAnnotation,
+    Bioconductor/ComplexHeatmap,
+    Bioconductor/GenomicRanges,
+    Bioconductor/SummarizedExperiment,
+    Bioconductor/GenomeInfoDb
 VignetteBuilder: knitr
+biocViews: Genomics, Mutation, RNASeq, Visualization, Nanopore
 URL: https://github.com/ZhenghaoXiao/LegitXMut
 BugReports: https://github.com/ZhenghaoXiao/LegitXMut/issues
 Config/testthat/edition: 3

@@ -23,9 +23,11 @@ the chromosome names in a VCF file accordingly. The updated VCF file is saved to
 \examples{
 # Example: Update chromosome names in a VCF file using a reference FASTA file/FNA file
 # Replace with actual test file path
-fastaPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna"
-vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf"
-outputVcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+fastaPath <- system.file("extdata", "yeast.fna", package = "LegitXMut")
+vcfPath <- system.file("extdata", "aligned_output.bam.indel.vcf", package = "LegitXMut")
+outputVcfPath <- file.path(system.file("extdata", package = "LegitXMut"), "updated.vcf")
+
+# Update the VCF file with specified inputs
 updatingvcf <- update_vcf(
   fastaPath = fastaPath,
   vcfPath = vcfPath,
@@ -51,6 +53,6 @@ OpenAI. ChatGPT: Assistance with R function development for bioinformatics appli
 National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
 NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
 
-National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898.
-NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
+National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202.
+NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 }
