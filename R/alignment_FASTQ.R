@@ -16,9 +16,12 @@
 #' @examples
 #' # Example 1: Align a FASTQ file to a reference genome with custom parameters.
 #' # Replace with actual test file path
-#' fastqPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/SRR29917898.fastq"
-#' referencePath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/yeast.fna"
-#' outputBAM <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/aligned_output.bam"
+#' fastqPath <- system.file("extdata", "ERR12205202.fastq", package = "LegitXMut")
+#' referencePath <- system.file("extdata", "yeast.fna", package = "LegitXMut")
+#' # Locate the extdata directory for outputs
+#' outputDir <- system.file("extdata", package = "LegitXMut")
+#' outputBAM <- file.path(outputDir, "aligned_output.bam")
+#'
 #' mutateddemoalignment <- alignment_FASTQ(fastqPath =  fastqPath,
 #' referencePath =  referencePath,
 #' indels = 10,
@@ -38,8 +41,8 @@
 #' National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
 #' NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
 #'
-#' National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898.
-#' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
+#' National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202.
+#' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
 #' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).

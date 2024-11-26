@@ -149,30 +149,35 @@ Archive (SRA) Run: SRR29917898. NCBI SRA,
 <https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download>.
 Accessed 4 Nov. 2024.
 
-9.OpenAI. ChatGPT: Assistance with R Function Development for
+9.National Center for Biotechnology Information (NCBI). Sequence Read
+Archive (SRA) Run: ERR12205202. NCBI SRA,
+<https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download>.
+Accessed 4 Nov. 2024.
+
+10.OpenAI. ChatGPT: Assistance with R Function Development for
 Bioinformatics Applications, “LegitxMut”. <https://chat.openai.com>.
 Accessed 5 Nov. 2024.
 
-10.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence.
+11.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence.
 GenomeInfoDb: Utilities for Manipulating Chromosome Names, Including
 Modifying the Names to Follow a Particular Convention. R package version
 1.36.0, Bioconductor, 2023,
 <https://bioconductor.org/packages/GenomeInfoDb>.
 
-11.R Core Team. R: A Language and Environment for Statistical Computing.
+12.R Core Team. R: A Language and Environment for Statistical Computing.
 R Foundation for Statistical Computing, 2024, Vienna, Austria,
 <https://www.R-project.org/>.
 
-12.Silva, Anjali. TestingPackage. GitHub,
+13.Silva, Anjali. TestingPackage. GitHub,
 <https://github.com/anjalisilva/TestingPackage>. Accessed 5 Nov. 2024.
 
-13.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis.
+14.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis.
 Springer-Verlag, 2016, <https://ggplot2.tidyverse.org>.
 
-14.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R
+15.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R
 package version 1.1.2, 2023, <https://CRAN.R-project.org/package=dplyr>.
 
-15.Wickham, H. stringr: Simple, Consistent Wrappers for Common String
+16.Wickham, H. stringr: Simple, Consistent Wrappers for Common String
 Operations. R package version 1.4.0, 2019,
 <https://CRAN.R-project.org/package=stringr>.
 
@@ -186,7 +191,6 @@ contributions. To submit an issue, use the GitHub issues.
 # Examples
 
 ``` r
-#Users Have to Change The File Paths to Local File Paths
 #For TESTS AND USAGE
 
 #Align a FASTQ file to a reference genome with custom parameters.
@@ -237,6 +241,7 @@ font_size = 11,
 alpha = 0.6,
 legend_position = "top"
 )
+#The demonstration of figures below were generated using National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024. These fastq file is not available for the demo data because its file size is too large
 ```
 
 ![](inst/extdata/heatmap.png)

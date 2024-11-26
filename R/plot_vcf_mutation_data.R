@@ -21,8 +21,7 @@
 #'
 #' @examples
 #' # Example 1: Generate a heatmap of variants' frequency across chromosomes
-#' # Replace with actual test file path
-#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+#' vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 #' plot_vcf_mutation_data(
 #'   vcfPath = vcfPath,
 #'   plotType = "heatmap",
@@ -36,8 +35,7 @@
 #' # Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
 #' #Demo data only have insertion-deletion variants of more than one nucleotides changes
 #' #Only indel will be visualized
-#' # Replace with actual test file path
-#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+#' vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 #' plot_vcf_mutation_data(
 #'   vcfPath = vcfPath,
 #'   plotType = "rainfall",
@@ -53,8 +51,7 @@
 #' )
 #'
 #' # Example 3: Generate a manhattan plot for mutations with modified y-axis label
-#' # Replace with actual test file path
-#' vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+#' vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 #' plot_vcf_mutation_data(
 #'   vcfPath = vcfPath,
 #'   plotType = "manhattan",
@@ -74,8 +71,8 @@
 #' National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
 #' NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
 #'
-#' National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898.
-#' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
+#' National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202.
+#' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 #'
 #' Gu, Z. et al. (2014). “circlize implements and enhances circular visualization in R.”
 #' Bioinformatics, 30(19), 2811–2812. doi:10.1093/bioinformatics/btu393.
