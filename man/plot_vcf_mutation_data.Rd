@@ -52,7 +52,7 @@ vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 plot_vcf_mutation_data(
   vcfPath = vcfPath,
   plotType = "heatmap",
-  title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
+  title = "Heatmap of Mutations Density",
   font_size = 12,
   xlab = "Chromosome",
   ylab = "Mutation Frequency",
@@ -93,7 +93,7 @@ plot_vcf_mutation_data(
 }
 \references{
 Morgan M, Pages H, Obenchain V, and Hayden N (2020).
-“VariantAnnotation: annotation of genetic variants.”
+"VariantAnnotation:annotation of genetic variants."
 Bioconductor. doi:10.18129/B9.bioc.VariantAnnotation. Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 
 National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
@@ -102,17 +102,18 @@ NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Ac
 National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202.
 NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 
-Gu, Z. et al. (2014). “circlize implements and enhances circular visualization in R.”
-Bioinformatics, 30(19), 2811–2812. doi:10.1093/bioinformatics/btu393.
+Gu, Z., Gu, L., Eils, R., Schlesner, M., and Brors, B. (2014).
+"circlize implements and enhances circular visualization in R."
+Bioinformatics, 30(19), 2811-2812. doi:10.1093/bioinformatics/btu393.
 
-Lawrence, Michael, et al. "Software for computing and annotating genomic ranges.“
+Lawrence, Michael, et al. "Software for computing and annotating genomic ranges."
 PLoS Computational Biology, vol. 9, no. 8, 2013, e1003118. https://doi.org/10.1371/journal.pcbi.1003118.
 
 Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, 2016. https://ggplot2.tidyverse.org.
 
-Gu, Zuguang, Eils, Roland, and Schlesner, Matthias.
+Gu, Z., Eils, R., and Schlesner, M. (2016).
 "Complex heatmaps reveal patterns and correlations in multidimensional genomic data."
-Bioinformatics, vol. 32, no. 18, 2016, pp. 2847–2849. https://doi.org/10.1093/bioinformatics/btw313.
+Bioinformatics, 32(18), 2847-2849. doi:10.1093/bioinformatics/btw313.
 
 Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation.
 R package version 1.1.2, 2023, https://CRAN.R-project.org/package=dplyr.

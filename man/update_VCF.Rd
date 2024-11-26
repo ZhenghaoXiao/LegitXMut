@@ -37,8 +37,8 @@ updatingvcf <- update_vcf(
 }
 \references{
 Morgan M, Pages H, Obenchain V, and Hayden N (2020).
-“VariantAnnotation: annotation of genetic variants.”
-Bioconductor. doi:10.18129/B9.bioc.VariantAnnotation. Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
+"VariantAnnotation:annotation of genetic variants."
+Bioconductor.doi:10.18129/B9.bioc.VariantAnnotation.Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 
 Wickham, H. (2019). stringr: Simple, Consistent Wrappers for Common String Operations.
 R package version 1.4.0. Available at: https://CRAN.R-project.org/package=stringr

@@ -1,9 +1,10 @@
 library(LegitXMut)
+library(testthat)
 test_that("plot_vcf_mutation_data generates a heatmap without errors", {
-  vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"  # Replace with actual test file path
+  vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut") # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")
 
-  expect_silent(plot_vcf_mutation_data(
+  expect_no_error(plot_vcf_mutation_data(
     vcfPath = vcfPath,
     plotType = "heatmap",
     title = "Heatmap Test",
@@ -15,10 +16,11 @@ test_that("plot_vcf_mutation_data generates a heatmap without errors", {
 })
 
 test_that("plot_vcf_mutation_data generates a rainfall plot without errors", {
-  vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"  # Replace with actual test file path
+  # Locate the packaged test data
+  vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")  # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")
 
-  expect_silent(plot_vcf_mutation_data(
+  expect_no_error(plot_vcf_mutation_data(
     vcfPath = vcfPath,
     plotType = "rainfall",
     title = "Rainfall Plot Test",
@@ -33,11 +35,12 @@ test_that("plot_vcf_mutation_data generates a rainfall plot without errors", {
   ))
 })
 
-test_that("plot_vcf_mutation_data generates a manhattan plot without errors", {
-  vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"  # Replace with actual test file path
+test_that("plot_vcf_mutation_data generates a Manhattan plot without errors", {
+  # Locate the packaged test data
+  vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")  # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")
 
-  expect_silent(plot_vcf_mutation_data(
+  expect_no_error(plot_vcf_mutation_data(
     vcfPath = vcfPath,
     plotType = "manhattan",
     title = "Manhattan Plot Test",
@@ -50,7 +53,8 @@ test_that("plot_vcf_mutation_data generates a manhattan plot without errors", {
 })
 
 test_that("plot_vcf_mutation_data handles invalid plot type", {
-  vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"  # Replace with actual test file path
+  # Locate the packaged test data
+  vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")  # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")
 
   expect_error(
@@ -60,11 +64,12 @@ test_that("plot_vcf_mutation_data handles invalid plot type", {
 })
 
 test_that("plot_vcf_mutation_data allows custom color schemes for heatmap", {
-  vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"  # Replace with actual test file path
+  # Locate the packaged test data
+  vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")  # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")
 
   custom_colors <- circlize::colorRamp2(breaks = c(0, 10), colors = c("blue", "yellow"))
-  expect_silent(plot_vcf_mutation_data(
+  expect_no_error(plot_vcf_mutation_data(
     vcfPath = vcfPath,
     plotType = "heatmap",
     color_scheme = custom_colors,
@@ -74,14 +79,15 @@ test_that("plot_vcf_mutation_data allows custom color schemes for heatmap", {
 })
 
 test_that("plot_vcf_mutation_data allows custom color schemes for rainfall plot", {
-  vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"  # Replace with actual test file path
+  # Locate the packaged test data
+  vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")  # Path to VCF
   skip_if_not(file.exists(vcfPath), "Test VCF file not found")
 
   custom_colors <- c("C>A" = "purple", "C>G" = "cyan", "C>T" = "pink",
                      "T>A" = "brown", "T>C" = "green", "T>G" = "orange",
                      "indel" = "grey")
 
-  expect_silent(plot_vcf_mutation_data(
+  expect_no_error(plot_vcf_mutation_data(
     vcfPath = vcfPath,
     plotType = "rainfall",
     color_scheme = custom_colors,

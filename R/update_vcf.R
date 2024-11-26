@@ -25,8 +25,8 @@
 #'
 #' @references
 #' Morgan M, Pages H, Obenchain V, and Hayden N (2020).
-#' “VariantAnnotation: annotation of genetic variants.”
-#' Bioconductor. doi:10.18129/B9.bioc.VariantAnnotation. Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
+#' "VariantAnnotation:annotation of genetic variants."
+#' Bioconductor.doi:10.18129/B9.bioc.VariantAnnotation.Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 #'
 #' Wickham, H. (2019). stringr: Simple, Consistent Wrappers for Common String Operations.
 #' R package version 1.4.0. Available at: https://CRAN.R-project.org/package=stringr
@@ -46,37 +46,64 @@
 #'
 #' @export
 #' @importFrom VariantAnnotation readVcf writeVcf
-#' @import stringr
+#' @importFrom stringr str_match
 #' @importFrom GenomeInfoDb seqlevels
 update_vcf <- function(fastaPath, vcfPath, outputVcfPath) {
-
+  # --- INPUT VALIDATION ---
+  if (!file.exists(fastaPath)) {
+    stop("The specified FASTA file does not exist: ", fastaPath)
+  }
+  if (!file.exists(vcfPath)) {
+    stop("The specified VCF file does not exist: ", vcfPath)
+  }
+  if (!dir.exists(dirname(outputVcfPath))) {
+    stop("The directory for the output VCF file does not exist: ", dirname(outputVcfPath))
+  }
+  # --- EXTRACT CHROMOSOME MAPPING FROM FASTA ---
+  # Open the FASTA file for reading
   chrom_mapping <- list()
   fasta_con <- file(fastaPath, "r")
 
+  # Read the FASTA file line by line to extract chromosome mappings
   while (TRUE) {
     line <- readLines(fasta_con, n = 1)
-    if (length(line) == 0) break
-    if (startsWith(line, ">")) {
+    if (length(line) == 0) break # End of file
+    if (startsWith(line, ">")) { # FASTA header lines start with ">"
       match <- stringr::str_match(line, "^>(\\S+) .*chromosome ([^, ]+)")
       if (!is.na(match[1, 2]) && !is.na(match[1, 3])) {
-        ref_name <- match[1, 2]
-        chrom_name <- paste0("chr", match[1, 3])
+        ref_name <- match[1, 2] # Extract reference name
+        chrom_name <- paste0("chr", match[1, 3]) # put in chromosome name
         chrom_mapping[[ref_name]] <- chrom_name
       }
     }
   }
   close(fasta_con)
 
+  # --- READ VCF FILE ---
+  # Load the VCF file
+  message("Reading VCF file: ", vcfPath)
   vcf <- VariantAnnotation::readVcf(vcfPath)
 
+  # --- UPDATE CHROMOSOME NAMES ---
+  # Retrieve the current sequence levels from the VCF file
   current_seqlevels <- GenomeInfoDb::seqlevels(vcf)
+  updated <- FALSE  # Track the updates
+
   for (old_name in names(chrom_mapping)) {
     new_name <- chrom_mapping[[old_name]]
     if (old_name %in% current_seqlevels) {
       GenomeInfoDb::seqlevels(vcf)[GenomeInfoDb::seqlevels(vcf) == old_name] <- new_name
+      updated <- TRUE
     }
   }
 
+  if (!updated) {
+    warning("No chromosome names were updated. Ensure the reference FASTA and VCF files match.")
+  }
+
+  # --- WRITE UPDATED VCF ---
+  # Save the updated VCF
+  message("Writing updated VCF file to: ", outputVcfPath)
   VariantAnnotation::writeVcf(vcf, outputVcfPath)
 
   message("VCF chromosome names updated and saved to: ", outputVcfPath)

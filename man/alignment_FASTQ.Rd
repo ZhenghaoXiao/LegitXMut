@@ -32,6 +32,10 @@ A function to align a FASTQ file to a reference genome, generating a BAM file.
 This function is suitable for handling large sequencing datasets and supports
 alignment of Nanopore reads and quality control.
 }
+\details{
+The LegitXMut package includes external demo data stored in the extdata directory.
+These external files are provided for demonstration purposes and support reproducibility of the analysis.
+}
 \examples{
 # Example 1: Align a FASTQ file to a reference genome with custom parameters.
 # Replace with actual test file path
@@ -50,11 +54,11 @@ outputBAM =  outputBAM)
 }
 \references{
 Morgan M, Lawrence M, Aboyoun P, Gentleman R, and Pages H (2019).
-“GenomicAlignments: Efficient alignments processing in R for NGS data.”
-Bioconductor. doi:10.18129/B9.bioc.GenomicAlignments. Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
+"GenomicAlignments: Efficient alignments processing in R for NGS data"
+Bioconductor.doi:10.18129/B9.bioc.GenomicAlignments.Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
 
-Liao Y, Smyth GK, Shi W (2019). “The R package Rsubread is easier, faster, cheaper
-and better for alignment and quantification of RNA sequencing reads.”
+Liao Y, Smyth GK, Shi W (2019)."The R package Rsubread is easier, faster, cheaper
+and better for alignment and quantification of RNA sequencing reads."
 Nucleic Acids Research, 47, e47. doi:10.1093/nar/gkz114.
 Available at: https://academic.oup.com/nar/article/47/8/e47/5371636.
 
@@ -65,5 +69,5 @@ National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA
 NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 
 OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-"Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
+"Assignment".https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
 }

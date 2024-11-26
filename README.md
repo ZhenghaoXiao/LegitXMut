@@ -145,13 +145,13 @@ cerevisiae S288C Genome Assembly (GCF_000146045.2). NCBI Datasets,
 Accessed 4 Nov. 2024.
 
 8.National Center for Biotechnology Information (NCBI). Sequence Read
-Archive (SRA) Run: SRR29917898. NCBI SRA,
-<https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download>.
+Archive (SRA) Run: ERR12205202. NCBI SRA,
+<https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download>.
 Accessed 4 Nov. 2024.
 
 9.National Center for Biotechnology Information (NCBI). Sequence Read
-Archive (SRA) Run: ERR12205202. NCBI SRA,
-<https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download>.
+Archive (SRA) Run: SRR29917898. NCBI SRA,
+<https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download>.
 Accessed 4 Nov. 2024.
 
 10.OpenAI. ChatGPT: Assistance with R Function Development for
@@ -188,62 +188,9 @@ Applied Bioinformatics course at the University of Toronto, Toronto,
 CANADA. <LegitXMut> welcomes issues, enhancement requests, and other
 contributions. To submit an issue, use the GitHub issues.
 
-# Examples
+# Demonstration
 
-``` r
-#For TESTS AND USAGE
-
-#Align a FASTQ file to a reference genome with custom parameters.
-mutateddemoalignment <- alignment_FASTQ(fastqPath =  "~/LegitXMut/inst/extdata/SRR29917898.fastq",
-referencePath =  "~/LegitXMut/inst/extdata/yeast.fna",
-outputBAM =  "~/LegitXMut/inst/extdata/aligned_output.bam")
-
-#Update chromosome names in a VCF file using a reference FASTA file/FNA file
-updatingvcf <- update_vcf(
- fastaPath = "~/LegitXMut/inst/extdata/yeast.fna",
- vcfPath = "~/LegitXMut/inst/extdata/aligned_output.bam.indel.vcf",
- outputVcfPath = "~/LegitXMut/inst/extdata/updated.vcf"
- )
-#Generate a heatmap of variants' frequency across chromosomes
-plot_vcf_mutation_data(
-vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
-plotType = "heatmap",
-title = "Heatmap of Mutations in SRR29917898 of Yeast Genome",
-font_size = 12,
-xlab = "Chromosome",
-ylab = "Mutation Frequency",
-legend_position = "bottom"
-)
-#Generate a rainfall plot of mutations across chromosomes with customized colors
-#Demo data only have insertion-deletion variants of more than one nucleotides changes
-#Only indel will be visualized
-plot_vcf_mutation_data(
-vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
-plotType = "rainfall",
-title = "Rainfall Plot of Mutations",
-color_scheme = c("C>A" = "red", "C>G" = "orange", "C>T" = "green",
-                    "T>A" = "yellow", "T>C" = "blue", "T>G" = "purple",
-                    "indel" = "grey"),
-alpha = 0.7,
-font_size = 10,
-xlab = "Genomic Position",
-ylab = "Inter-Variant Distance (log10)",
-legend_position = "right"
-)
-#Generate a manhattan plot for mutations with modified y-axis label
-plot_vcf_mutation_data(
-vcfPath = "~/LegitXMut/inst/extdata/updated.vcf",
-plotType = "manhattan",
-title = "Manhattan Plot of Variants",
-ylab = "-log10(Supporting Reads)",
-xlab = "Genomic Position",
-font_size = 11,
-alpha = 0.6,
-legend_position = "top"
-)
-#The demonstration of figures below were generated using National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024. These fastq file is uploaded for the demo data because its file size is too large
-```
-
+The following figures were generating using the data set SRR29917898
 ![](inst/extdata/heatmap.png)
 
 ![](inst/extdata/manhattan.png)

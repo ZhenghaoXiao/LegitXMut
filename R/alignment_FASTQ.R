@@ -13,6 +13,10 @@
 #' @return An object containing alignment information from the BAM file and information of variant calling from VCF file,
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
+#' @details
+#' The LegitXMut package includes external demo data stored in the extdata directory.
+#'    These external files are provided for demonstration purposes and support reproducibility of the analysis.
+#'
 #' @examples
 #' # Example 1: Align a FASTQ file to a reference genome with custom parameters.
 #' # Replace with actual test file path
@@ -30,11 +34,11 @@
 #'
 #' @references
 #' Morgan M, Lawrence M, Aboyoun P, Gentleman R, and Pages H (2019).
-#' “GenomicAlignments: Efficient alignments processing in R for NGS data.”
-#' Bioconductor. doi:10.18129/B9.bioc.GenomicAlignments. Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
+#' "GenomicAlignments: Efficient alignments processing in R for NGS data"
+#' Bioconductor.doi:10.18129/B9.bioc.GenomicAlignments.Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
 #'
-#' Liao Y, Smyth GK, Shi W (2019). “The R package Rsubread is easier, faster, cheaper
-#' and better for alignment and quantification of RNA sequencing reads.”
+#' Liao Y, Smyth GK, Shi W (2019)."The R package Rsubread is easier, faster, cheaper
+#' and better for alignment and quantification of RNA sequencing reads."
 #' Nucleic Acids Research, 47, e47. doi:10.1093/nar/gkz114.
 #' Available at: https://academic.oup.com/nar/article/47/8/e47/5371636.
 #'
@@ -45,32 +49,49 @@
 #' NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 #'
 #' OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-#' "Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
+#' "Assignment".https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
 #'
 #' @export
-#' @import Rsubread
+#' @importFrom Rsubread buildindex align
 #' @importFrom GenomicAlignments readGAlignments
 alignment_FASTQ <- function(fastqPath, referencePath, indels = 10, maxMismatches = 1000, outputBAM = "output.bam") {
-
+  # --- INPUT VALIDATION ---
+  if (!file.exists(fastqPath)) {
+    stop("FASTQ file does not exist: ", fastqPath)# FASTQ validation
+  }
+  if (!file.exists(referencePath)) {
+    stop("Reference genome file does not exist: ", referencePath)# Reference Genome validation
+  }
+  if (!is.numeric(indels) || indels < 0) {
+    stop("Invalid 'indels' value. Must be a non-negative integer.")# Indel value validation
+  }
+  if (!is.numeric(maxMismatches) || maxMismatches < 0) {
+    stop("Invalid 'maxMismatches' value. Must be a non-negative integer.")# Max mismatches validation
+  }
+  # --- PREPARATION---
+  # Remove the ".fasta" extension from the reference genome path to extract and use the index base names
   indexBase <- gsub("\\.fasta$", "", referencePath)
-
+  # Check if the indexs are already there,If not, build the index using Rsubread
   if (!file.exists(paste0(indexBase, ".00.b.array"))) {
     message("Building index for the reference genome...")
     Rsubread::buildindex(basename = indexBase, reference = referencePath)
   }
 
+  # --- ALIGNMENT---
+  #Align the FASTQ file to the reference genome
   message("Aligning reads to the reference genome...")
-  Rsubread::align(index = indexBase,
-                  readfile1 = fastqPath,
-                  input_format = "FASTQ",
-                  output_file = outputBAM,
-                  nthreads = 1,
-                  indels = indels,
-                  maxMismatches = maxMismatches)
-
+  Rsubread::align(index = indexBase,# Reference genome index base
+                  readfile1 = fastqPath,# Input FASTQ file
+                  input_format = "FASTQ",# Specify input file format
+                  output_file = outputBAM,# Output BAM file path
+                  nthreads = 1,# Number of threads for the alignment
+                  indels = indels,# Maximum number of insertions/deletions allowed
+                  maxMismatches = maxMismatches)# Maximum number of mismatches allowed
+  # Confirmation of alignment completion
   message("Alignment complete. BAM file saved as: ", outputBAM)
 
   bamData <- GenomicAlignments::readGAlignments(outputBAM)
+  # --- RETURN---
   return(bamData)
 }
 

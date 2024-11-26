@@ -16,6 +16,11 @@ opts_chunk$set(fig.align = "center",
                par = TRUE, # needed for setting hook 
                collapse = TRUE, # collapse input & ouput code in chunks
                warning = FALSE)
+knit_hooks$set(par = function(before, options, envir)
+  { if(before && options$fig.show != "none") 
+       par(family = "sans", mar=c(4.1,4.1,1.1,1.1), mgp=c(3,1,0), tcl=-0.5)
+})
+set.seed(1) # for exact reproducibility
 ```
 
 ## Introduction
@@ -40,9 +45,12 @@ To list all sample datasets available in the package:
 ``` r
 #Demo data of this package was downloaded from NCBI, as listed in the reference
 #Users can access them in inst/exdata/
-data(package = "LegitXMut")
+#ERR12205202.fastq: A FASTQ file containing sequencing reads.
+#yeast.fna: A reference genome in FASTA format.
+#aligned_output.bam: An example BAM file from an alignment.
+#updated.vcf: A Variant Call Format (VCF) file with mutation data.
+data(package = "LegitXMut")#will give no data
 ```
-
 <br>
 
 
@@ -76,7 +84,8 @@ mutateddemoalignment <- alignment_FASTQ(
 
 # See the result
 View(mutateddemoalignment)
-
+#This produces a BAM file that includes the alignment information of the files and a VCF file that can be used for visualization
+#Adjust parameters indels and maxMismatches for different datasets.
 ```
 
 ###Update Chromosome Names to VCF File
@@ -90,11 +99,13 @@ fastaPath <- system.file("extdata", "yeast.fna", package = "LegitXMut")
 vcfPath <- system.file("extdata", "aligned_output.bam.indel.VCF", package = "LegitXMut")
 
 # Use a writable location for the output VCF file
-outputVcfPath <- file.path(tempdir(), "updated.vcf")  # Temporary directory for the output
+outputVcfPath <- file.path(system.file("extdata", package = "LegitXMut"), "updated.VCF")
 
 # Update VCF chromosome names
 updatedvcf <- update_vcf(fastaPath, vcfPath, outputVcfPath)
 
+#The VCF file now can reflect the chromosome names of each mutations
+#Use this updated VCF for downstream analysis of visualization.
 ```
 
 ###Visualizing Mutation Data
@@ -103,7 +114,7 @@ including heatmaps, Manhattan plots, and rainfall plots.
 ```{r, eval = FALSE}
 library(LegitXMut)
 # Define path
-vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 #Plot with heatmap
 plot_vcf_mutation_data(
   vcfPath = vcfPath,
@@ -114,20 +125,13 @@ plot_vcf_mutation_data(
   ylab = "Mutation Frequency",
   legend_position = "bottom"
 )
-#Plot with manhattan plot
-vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
-plot_vcf_mutation_data(
-  vcfPath = vcfPath,
-  plotType = "manhattan",
-  title = "Manhattan Plot of Variants",
-  ylab = "-log10(Supporting Reads)",
-  xlab = "Genomic Position",
-  font_size = 11,
-  alpha = 0.6,
-  legend_position = "top"
-)
+
+#The heatmap visualizes mutation densities across chromosomes in the reference genome, with rows representing chromosomes sorted from high to low mutation density.
+#The highest mutation counts is indicated by the darkest red color, while the lowest mutation counts is visualized with lighter shades of red.
+#Grouping on the left shows "High Mutation" (green) and "Low Mutation" (purple) density categories based on the median mutation counts.
+
 #Plot with rainfall plot
-vcfPath <- "C:/Users/rjay1/Desktop/BCB410/LegitXMut/inst/extdata/updated.vcf"
+vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 #Demo data only have insertion-deletion variants of more than one nucleotides changes
 #Only indel will be visualized
 plot_vcf_mutation_data(
@@ -143,10 +147,35 @@ plot_vcf_mutation_data(
   ylab = "Inter-Variant Distance (log10)",
   legend_position = "right"
 )
-#Figures will be generated on the right corner of the R studio
-```
 
+#This plot demonstrates the distribution of mutations across chromosomes. Each dot represents a variant, with the x-axis indicating the genomic position and the y-axis showing the significance of the supporting reads, expressed as -log10(SR).
+#Chromosome-specific clustering of high-support mutations can highlight significant genomic regions, such as hotspots for variation and potential areas of biological interest in mutation studies.
+
+# Define path
+vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
+# Plot the Manhattan plot using the updated VCF file
+plot_vcf_mutation_data(
+  vcfPath = vcfPath,
+  plotType = "manhattan",
+  title = "Manhattan Plot of Variants",
+  ylab = "-log10(Supporting Reads)",
+  xlab = "Genomic Position",
+  font_size = 11,
+  alpha = 0.6,
+  legend_position = "top"
+)
+
+#This plot represents the inter-variant distances (y-axis, log-transformed) as a function of genomic positions (x-axis) across chromosomes. Each dot represents a mutation.
+#Dense regions with shorter inter-variant distances can indicate mutation hotspots.
+#Sparse regions with long inter-variant distances could represent conserved genomic regions or low-coverage areas during sequencing.
+
+```
 <br>
+
+## Figures
+<div style="text-align:center"><img src="heatmap.png" alt="heatmap" width="500"/>
+<div style="text-align:center"><img src="rainfall.png" alt="rainfall" width="500"/>
+<div style="text-align:center"><img src="manhattan.png" alt="manhattan" width="500"/>
 
 ## Package References
 
@@ -171,21 +200,23 @@ plot_vcf_mutation_data(
 
 7.National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2). NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
 
-8.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
+8.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
 
-9.OpenAI. ChatGPT: Assistance with R Function Development for Bioinformatics Applications, "LegitxMut". https://chat.openai.com. Accessed 5 Nov. 2024.
+9.National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: SRR29917898. NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download. Accessed 4 Nov. 2024.
 
-10.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence. GenomeInfoDb: Utilities for Manipulating Chromosome Names, Including Modifying the Names to Follow a Particular Convention. R package version 1.36.0, Bioconductor, 2023, https://bioconductor.org/packages/GenomeInfoDb.
+10.OpenAI. ChatGPT: Assistance with R Function Development for Bioinformatics Applications, "LegitxMut". https://chat.openai.com. Accessed 5 Nov. 2024.
 
-11.R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, 2024, Vienna, Austria, https://www.R-project.org/.
+11.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence. GenomeInfoDb: Utilities for Manipulating Chromosome Names, Including Modifying the Names to Follow a Particular Convention. R package version 1.36.0, Bioconductor, 2023, https://bioconductor.org/packages/GenomeInfoDb.
 
-12.Silva, Anjali. TestingPackage. GitHub, https://github.com/anjalisilva/TestingPackage. Accessed 5 Nov. 2024.
+12.R Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, 2024, Vienna, Austria, https://www.R-project.org/.
 
-13.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, 2016, https://ggplot2.tidyverse.org.
+13.Silva, Anjali. TestingPackage. GitHub, https://github.com/anjalisilva/TestingPackage. Accessed 5 Nov. 2024.
 
-14.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R package version 1.1.2, 2023, https://CRAN.R-project.org/package=dplyr.
+14.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, 2016, https://ggplot2.tidyverse.org.
 
-15.Wickham, H. stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0, 2019, https://CRAN.R-project.org/package=stringr.
+15.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R package version 1.1.2, 2023, https://CRAN.R-project.org/package=dplyr.
+
+16.Wickham, H. stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0, 2019, https://CRAN.R-project.org/package=stringr.
 
 ----
 
