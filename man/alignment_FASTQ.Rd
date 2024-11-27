@@ -53,14 +53,14 @@ outputBAM =  outputBAM)
 
 }
 \references{
-Morgan M, Lawrence M, Aboyoun P, Gentleman R, and Pages H (2019).
-"GenomicAlignments: Efficient alignments processing in R for NGS data"
-Bioconductor.doi:10.18129/B9.bioc.GenomicAlignments.Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
-
 Liao Y, Smyth GK, Shi W (2019)."The R package Rsubread is easier, faster, cheaper
 and better for alignment and quantification of RNA sequencing reads."
 Nucleic Acids Research, 47, e47. doi:10.1093/nar/gkz114.
 Available at: https://academic.oup.com/nar/article/47/8/e47/5371636.
+
+Morgan M, Lawrence M, Aboyoun P, Gentleman R, and Pages H (2019).
+"GenomicAlignments: Efficient alignments processing in R for NGS data"
+Bioconductor.doi:10.18129/B9.bioc.GenomicAlignments.Available at: https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html.
 
 National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
 NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.

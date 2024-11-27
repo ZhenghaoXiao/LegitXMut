@@ -40,19 +40,19 @@ Morgan M, Pages H, Obenchain V, and Hayden N (2020).
 "VariantAnnotation:annotation of genetic variants."
 Bioconductor.doi:10.18129/B9.bioc.VariantAnnotation.Available at: https://bioconductor.org/packages/release/bioc/html/VariantAnnotation.html.
 
-Wickham, H. (2019). stringr: Simple, Consistent Wrappers for Common String Operations.
-R package version 1.4.0. Available at: https://CRAN.R-project.org/package=stringr
-
-Pagès, H., Aboyoun, P., DebRoy, S., and Lawrence, M. (2023).
-GenomeInfoDb: Utilities for manipulating chromosome names, including modifying the names to follow a particular convention.
-R package version 1.36.0, Bioconductor, https://bioconductor.org/packages/GenomeInfoDb.
-
-OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
-"Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
-
 National Center for Biotechnology Information (NCBI). Saccharomyces cerevisiae S288C Genome Assembly (GCF_000146045.2).
 NCBI Datasets, https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/. Accessed 4 Nov. 2024.
 
 National Center for Biotechnology Information (NCBI). Sequence Read Archive (SRA) Run: ERR12205202.
 NCBI SRA, https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download. Accessed 4 Nov. 2024.
+
+OpenAI. ChatGPT: Assistance with R function development for bioinformatics applications,
+"Assignment". https://chat.openai.com (2023, accessed 5 November 2024 for debugging).
+
+Pagès, H., Aboyoun, P., DebRoy, S., and Lawrence, M. (2023).
+GenomeInfoDb: Utilities for manipulating chromosome names, including modifying the names to follow a particular convention.
+R package version 1.36.0, Bioconductor, https://bioconductor.org/packages/GenomeInfoDb.
+
+Wickham, H. (2019). stringr: Simple, Consistent Wrappers for Common String Operations.
+R package version 1.4.0. Available at: https://CRAN.R-project.org/package=stringr
 }
