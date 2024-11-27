@@ -1,0 +1,14 @@
+citHeader("To cite LegitXMut in publications use:")
+
+citEntry(
+  entry = "Unpublished",
+  title = "LegitXMut: A Genomic Data Processing and Visualization Package",
+  author = "Zhenghao Xiao",
+  note = "Unpublished",
+  year = "2024",
+
+  textVersion = paste(
+    "Xiao, Z. (2024) LegitXMut: A User-Friendly R Package for Nanopore Sequencing Mutation Analysis: Efficient, Accessible Workflows from FASTQ File Alignment to Visualizations.
+     Unpublished. URL https://github.com/zhenghao/LegitXMut."
+  )
+)
