@@ -200,7 +200,7 @@ Operations. R package version 1.4.0, 2019,
 
 This package was developed as part of an assessment for 2024 BCB410H:
 Applied Bioinformatics course at the University of Toronto, Toronto,
-CANADA. *LegitXMut* welcomes issues, enhancement requests, and other
+CANADA. `LegitXMut`welcomes issues, enhancement requests, and other
 contributions. To submit an issue, use the GitHub issues.
 
 # Demonstration
