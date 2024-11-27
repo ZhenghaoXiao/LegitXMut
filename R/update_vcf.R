@@ -1,7 +1,7 @@
-#' Update Chromosome Names to VCF File Based on Reference FASTA If Performing Single Chromosome Anlysis
+#' Update Chromosome Names to VCF File Based on Reference FASTA If Performing Single Chromosome Analysis
 #'
-#' This function reads a reference FASTA file to extract chromosome mappings and updates
-#' the chromosome names in a VCF file accordingly. The updated VCF file is saved to a specified output path.
+#' This function reads a reference FASTA file to extract chromosome mappings and updates.
+#' The chromosome names in a VCF file accordingly. The updated VCF file is saved to a specified output path.
 #'
 #' @param fastaPath A character string specifying the path to the reference FASTA file.
 #' @param vcfPath A character string specifying the path to the input VCF file that needs chromosome name updating.
@@ -83,6 +83,19 @@ update_vcf <- function(fastaPath, vcfPath, outputVcfPath) {
   # Load the VCF file
   message("Reading VCF file: ", vcfPath)
   vcf <- VariantAnnotation::readVcf(vcfPath)
+
+  # --- CLEAN NULL CHARACTERS IN VCF DATA ---
+  clean_vcf_data <- function(values) {
+    vapply(values, function(x) {
+      raw_vals <- charToRaw(x)
+      raw_vals <- raw_vals[raw_vals != as.raw(0)] # Remove null characters
+      rawToChar(raw_vals)
+    }, character(1), USE.NAMES = FALSE)
+  }
+
+  # Clean seqlevels in case of null characters
+  seqlevels_cleaned <- clean_vcf_data(GenomeInfoDb::seqlevels(vcf))
+  GenomeInfoDb::seqlevels(vcf) <- seqlevels_cleaned
 
   # --- UPDATE CHROMOSOME NAMES ---
   # Retrieve the current sequence levels from the VCF file
