@@ -51,34 +51,38 @@ The overview of the package:
 
 ```{r, eval = FALSE}
 ls("package:LegitXMut")
-data(package = "LegitXMut") 
+data(package = "LegitXMut") # empty
+# Demo data of this package was downloaded from NCBI, as listed in the reference
+# Users can access them in inst/exdata/, as mentioned in the function examples and vignettes
 browseVignettes("LegitXMut")
 ```
 `LegitXMut` provides the following functions for now: 
-- `alignment_FASTQ`:This function creates a `BAM` file and calls variants by aligning a `FASTQ` file to a provided reference genome in `FASTA` format. 
-It allows the setting of maximal indel and mismatch criteria for quality control and optimization. The result `.VCF` file should be input into `update_vcf`
+- `alignment_FASTQ`:This function creates `BAM`and `VCF` file by aligning a `FASTQ` file to a provided reference genome in `FASTA` format and calls variant. 
+It allows the setting of maximal insertions and deletions(indel) mutations and mismatches criteria for quality control and optimization. The result `.VCF` file should be input into `update_vcf`
 and `plot_vcf_mutation_data` later on.
 
 -`update_vcf`:This tool updates the chromosome names in a `VCF` file by extracting chromosomal mappings from a reference genome in `FASTA` format. 
-It ensures the workflows that demand multiple chromosome and whole genome analysis by producing a modified `VCF` file with standardized chromosome names.
+It ensures the workflows that demand multiple chromosomes and whole genome analysis by producing a modified `VCF` file with standardized chromosome names.
 
--`plot_vcf_mutation_data`:This function takes the VCF file generated from update_vcf or users can input external file and uses it to create different mutation visualization graphs. 
-The three graphic types that users can select from—"heatmap," "manhattan," and "rainfall"—each offers distinct viewpoints on mutation data, including inter-variant distances,
-confidences of the result, and mutation density across chromosomes.
+-`plot_vcf_mutation_data`:This function takes the VCF file generated from update_vcf or users can input external files and use them to create different mutation visualizations. 
+The three graphic types that users can select from—"heatmap," "manhattan," and "rainfall"—each offers distinct viewpoints on mutation data, including mutation density, confidences of the result,
+and inter-variant distances across chromosomes.
 
 ![](inst/extdata/workflow.png)
-# Contributions
-The author of `LegitXMut` is `Zhenghao Xiao`. The package provides three functions to analyze genetic variation by allowing users to 
-align sequence reads, standardize chromosome names, and visualize mutation patterns in one package.
 
-`alignment_FASTQ()`: `Rsubread` and `GenomicAlignments` was employed to align a FASTQ file to a reference genome, generating BAM and VCF files
-while allowing quality control through configurable parameters for `indels` and `mismatches`.OpenAI was used for debugging suggestions and potential function 
+# Contributions
+
+The author of `LegitXMut` is `Zhenghao Xiao`. The package provides three functions to analyze genetic variation by allowing users to 
+align sequence reads to reference genome, standardize chromosome names, and visualize mutation patterns in one package.
+
+`alignment_FASTQ()`: `Rsubread` and `GenomicAlignments` was employed to align a FASTQ file to a reference genome, generating `BAM` and `VCF` files
+while allowing quality control through configurable parameters for `indels` and `mismatches`. OpenAI was used for debugging suggestions and potential function 
 suggestions only.
 
 `update_vcf()`: This function utilizes `VariantAnnotation`, `stringr` and `GenomeInfoDb` to update chromosome names in VCF files according to a reference genome
-fasta file, the updated file will used for visualizations.OpenAI was used for debugging suggestions and potential function suggestions only..
+`FASTA` file, the updated file will used for visualizations. OpenAI was used for debugging suggestions and potential function suggestions only.
 
-`plot_vcf_mutation_data()`: This function was requires `VariantAnnotation`, `GenomicRanges`,  `ggplot2`, `ComplexHeatmap`, `SummarizedExperiment`, `dplyr`, `stats`, and `circlize`.
+`plot_vcf_mutation_data()`: This function requires `VariantAnnotation`, `GenomicRanges`,  `ggplot2`, `ComplexHeatmap`, `SummarizedExperiment`, `dplyr`, `stats`, and `circlize`.
 Using a variety of plot patterns ("heatmap," "manhattan," and "rainfall"), this tool visualizes mutation data from VCF files to help with understanding chromosome-to-chromosome inter-variant distances, 
 mutation frequency density, and distribution.OpenAI was used for debugging suggestions and potential function suggestions only.
 
