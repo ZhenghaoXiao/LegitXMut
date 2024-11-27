@@ -56,12 +56,11 @@ data(package = "LegitXMut")#will give no data
 
 ## Applications
 
-###Aligning FASTQ to Reference Genome
+**Aligning FASTQ to Reference Genome**
+
 To create a BAM file, align a FASTQ file to a reference genome using the alignment_FASTQ function. 
 This function supports for quality control during alignment by manipulating 
-indels and maxMismatches parameters.
-
-More information about *alignment_FASTQ* function can be found using `?`
+indels and maxMismatches parameters. More information about *alignment_FASTQ* function can be found using `?`
 ```{r, eval = FALSE}
 # Load the LegitXMut package
 library(LegitXMut)
@@ -81,14 +80,15 @@ mutateddemoalignment <- alignment_FASTQ(
   maxMismatches = 1000,
   outputBAM = outputBAM
 )
-
 # See the result
 View(mutateddemoalignment)
-#This produces a BAM file that includes the alignment information of the files and a VCF file that can be used for visualization
-#Adjust parameters indels and maxMismatches for different datasets.
 ```
+```{r, eval = FALSE}
+#This produces a BAM file that includes the alignment information of the files and a VCF file 
+#that can be used for visualization.Adjust parameters indels and maxMismatches for different datasets.
+```
+**Update Chromosome Names to VCF File**
 
-###Update Chromosome Names to VCF File
 The update_vcf function uses the reference FASTA file to update the chromosomal names in a VCF file.
 ```{r, eval = FALSE}
 # Load the LegitXMut package
@@ -103,12 +103,14 @@ outputVcfPath <- file.path(system.file("extdata", package = "LegitXMut"), "updat
 
 # Update VCF chromosome names
 updatedvcf <- update_vcf(fastaPath, vcfPath, outputVcfPath)
+```
 
+```{r, eval = FALSE}
 #The VCF file now can reflect the chromosome names of each mutations
 #Use this updated VCF for downstream analysis of visualization.
 ```
+**Visualizing Mutation Data**
 
-###Visualizing Mutation Data
 Input mutation data from a VCF file, plot_vcf_mutation_data creates various types of visualizations,
 including heatmaps, Manhattan plots, and rainfall plots.
 ```{r, eval = FALSE}
@@ -125,11 +127,15 @@ plot_vcf_mutation_data(
   ylab = "Mutation Frequency",
   legend_position = "bottom"
 )
+```
+<div style="text-align:center"><img src="heatmap.png" alt="heatmap" width="500"/>
 
-#The heatmap visualizes mutation densities across chromosomes in the reference genome, with rows representing chromosomes sorted from high to low mutation density.
-#The highest mutation counts is indicated by the darkest red color, while the lowest mutation counts is visualized with lighter shades of red.
-#Grouping on the left shows "High Mutation" (green) and "Low Mutation" (purple) density categories based on the median mutation counts.
+**The heatmap visualizes mutation densities across chromosomes in the reference genome, with rows representing chromosomes sorted from high to low mutation density.**
+**The highest mutation counts is indicated by the darkest red color, while the lowest mutation counts is visualized with lighter shades of red.**
+**Grouping on the left shows "High Mutation" (green) and "Low Mutation" (purple) density categories based on the median mutation counts.**
 
+<br>
+```{r, eval = FALSE}
 #Plot with rainfall plot
 vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 #Demo data only have insertion-deletion variants of more than one nucleotides changes
@@ -147,10 +153,14 @@ plot_vcf_mutation_data(
   ylab = "Inter-Variant Distance (log10)",
   legend_position = "right"
 )
+```
+<div style="text-align:center"><img src="rainfall.png" alt="rainfall" width="500"/>
 
-#This plot demonstrates the distribution of mutations across chromosomes. Each dot represents a variant, with the x-axis indicating the genomic position and the y-axis showing the significance of the supporting reads, expressed as -log10(SR).
-#Chromosome-specific clustering of high-support mutations can highlight significant genomic regions, such as hotspots for variation and potential areas of biological interest in mutation studies.
+**This plot demonstrates the distribution of mutations across chromosomes. Each dot represents a variant, with the x-axis indicating the genomic position and the y-axis showing the significance of the supporting reads, expressed as -log10(SR).**
+**Chromosome-specific clustering of high-support mutations can highlight significant genomic regions, such as hotspots for variation and potential areas of biological interest in mutation studies.**
 
+<br>
+```{r, eval = FALSE}
 # Define path
 vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 # Plot the Manhattan plot using the updated VCF file
@@ -164,18 +174,14 @@ plot_vcf_mutation_data(
   alpha = 0.6,
   legend_position = "top"
 )
-
-#This plot represents the inter-variant distances (y-axis, log-transformed) as a function of genomic positions (x-axis) across chromosomes. Each dot represents a mutation.
-#Dense regions with shorter inter-variant distances can indicate mutation hotspots.
-#Sparse regions with long inter-variant distances could represent conserved genomic regions or low-coverage areas during sequencing.
-
 ```
-<br>
-
-## Figures
-<div style="text-align:center"><img src="heatmap.png" alt="heatmap" width="500"/>
-<div style="text-align:center"><img src="rainfall.png" alt="rainfall" width="500"/>
 <div style="text-align:center"><img src="manhattan.png" alt="manhattan" width="500"/>
+
+**This plot represents the inter-variant distances (y-axis, log-transformed) as a function of genomic positions (x-axis) across chromosomes. Each dot represents a mutation.**
+**Dense regions with shorter inter-variant distances can indicate mutation hotspots.**
+**Sparse regions with long inter-variant distances could represent conserved genomic regions or low-coverage areas during sequencing.**
+
+<br>
 
 ## Package References
 
