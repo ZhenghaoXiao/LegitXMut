@@ -6,9 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-A user-friendly R package for Nanopore sequencing mutation analysis. It
-offers efficient, accessible workflows from FASTQ file alignment to
-visualizations.
+A User-Friendly R Package for Nanopore Sequencing Mutation Analysis.
+Offering A Efficient, Accessible Workflow from FASTQ File Alignment to
+Visualizations.
 
 # Description
 
@@ -199,6 +199,16 @@ This package was developed as part of an assessment for 2024 BCB410H:
 Applied Bioinformatics course at the University of Toronto, Toronto,
 CANADA. `LegitXMut`welcomes issues, enhancement requests, and other
 contributions. To submit an issue, use the GitHub issues.
+
+# Notes
+
+The package may take a while to download, because it requires multiple
+dependencies. The workflow of this version of the package only supports
+the display of insertions and deletions(indel) mutation patterns due to
+the current implementation of the alignment function. However, the
+Manhattan plot visualization in this version can display single
+nucleotide polymorphisms(SNPs) when provided with appropriate input
+data.
 
 # Demonstration
 

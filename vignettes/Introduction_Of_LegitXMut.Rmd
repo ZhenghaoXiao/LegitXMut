@@ -113,6 +113,10 @@ updatedvcf <- update_vcf(fastaPath, vcfPath, outputVcfPath)
 
 Input mutation data from a VCF file, plot_vcf_mutation_data creates various types of visualizations,
 including heatmaps, Manhattan plots, and rainfall plots.
+The workflow of this version of the package only supports the display of insertions and deletions(indel) mutation 
+patterns due to the current implementation of the alignment function. 
+However, the Manhattan plot visualization in this version can display single nucleotide polymorphisms(SNPs) 
+when provided with appropriate input data.
 ```{r, eval = FALSE}
 library(LegitXMut)
 # Define path
