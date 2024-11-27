@@ -48,20 +48,18 @@ genome-specific and mutation-focused visualizations directly from the VCF file.
 }
 \examples{
 # Example 1: Generate a heatmap of variants' frequency across chromosomes
+#xlab, ylab, and legend position are fixed for heatmap
 vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 plot_vcf_mutation_data(
   vcfPath = vcfPath,
   plotType = "heatmap",
   title = "Heatmap of Mutations Density",
   font_size = 12,
-  xlab = "Chromosome",
-  ylab = "Mutation Frequency",
-  legend_position = "bottom"
-  )
+)
 
 # Example 2: Generate a rainfall plot of mutations across chromosomes with customized colors
-#Demo data only have insertion-deletion variants of more than one nucleotides changes
-#Only indel will be visualized
+# Demo data only have insertion-deletion variants of more than one nucleotides changes
+# Only indel will be visualized because the this alignment method only output indel into VCF
 vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 plot_vcf_mutation_data(
   vcfPath = vcfPath,
@@ -78,6 +76,8 @@ plot_vcf_mutation_data(
 )
 
 # Example 3: Generate a manhattan plot for mutations with modified y-axis label
+# Manhattan plots do not allow color modifications
+# Since the potentially high number of chromosomes displayed
 vcfPath <- system.file("extdata", "updated.vcf", package = "LegitXMut")
 plot_vcf_mutation_data(
   vcfPath = vcfPath,

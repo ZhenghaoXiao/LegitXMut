@@ -8,7 +8,7 @@
 #' @param referencePath A character string for the path to the reference genome in FASTA format.
 #' @param indels An integer specifying the maximum number of insertions or deletions allowed in the alignment. Default is 10.
 #' @param maxMismatches An integer specifying the maximum number of mismatches allowed in the alignment. Default is 1000.
-#' @param outputBAM A character string for the name of the output BAM file. Default is "output.bam".
+#' @param outputBAM A character string for the name and path of the output BAM and VCF file. Default is "output.bam".
 #'
 #' @return An object containing alignment information from the BAM file and information of variant calling from VCF file,
 #'    which can be used for downstream analysis, including variant calling and visualization.
@@ -89,6 +89,7 @@ alignment_FASTQ <- function(fastqPath, referencePath, indels = 10, maxMismatches
                   maxMismatches = maxMismatches)# Maximum number of mismatches allowed
   # Confirmation of alignment completion
   message("Alignment complete. BAM file saved as: ", outputBAM)
+  message("Alignment complete. VCF file has also been saved to this directory")
 
   bamData <- GenomicAlignments::readGAlignments(outputBAM)
   # --- RETURN---

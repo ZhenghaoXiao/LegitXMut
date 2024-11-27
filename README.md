@@ -48,6 +48,12 @@ devtools::install_github("ZhenghaoXiao/LegitXMut", build_vignettes = TRUE)
 library(LegitXMut)
 ```
 
+To run the Shiny app:
+
+``` r
+runLegitXMut()
+```
+
 # Overview
 
 The overview of the package:
@@ -110,75 +116,83 @@ potential function suggestions only.
 
 # References
 
-1.Gu, Z. et al. “circlize Implements and Enhances Circular Visualization
+1.BioRender. (2024). Image created by Zhenghao Xiao. Retrieved November
+5, 2024, from <https://app.biorender.com/>
+
+2.Chang, W., J. Cheng, J. Allaire, C. Sievert, B. Schloerke, Y. Xie, J.
+Allen, J. McPherson, A. Dipert, B. Borges (2024). shiny: Web Application
+Framework for R. R package version 1.9.1,
+<https://CRAN.R-project.org/package=shiny>
+
+3.Gu, Z. et al. “circlize Implements and Enhances Circular Visualization
 in R.” Bioinformatics, vol. 30, no. 19, 2014, pp. 2811–2812.
 <doi:10.1093/bioinformatics/btu393>.
 
-2.Gu, Zuguang, Roland Eils, and Matthias Schlesner. “Complex Heatmaps
+4.Gu, Zuguang, Roland Eils, and Matthias Schlesner. “Complex Heatmaps
 Reveal Patterns and Correlations in Multidimensional Genomic Data.”
 Bioinformatics, vol. 32, no. 18, 2016, pp. 2847–2849.
 <https://doi.org/10.1093/bioinformatics/btw313>.
 
-3.Lawrence, Michael, et al. “Software for Computing and Annotating
+5.Lawrence, Michael, et al. “Software for Computing and Annotating
 Genomic Ranges.” PLoS Computational Biology, vol. 9, no. 8, 2013,
 e1003118. <https://doi.org/10.1371/journal.pcbi.1003118>.
 
-4.Liao, Y., Gordon K. Smyth, and Wei Shi. “The R Package Rsubread is
+6.Liao, Y., Gordon K. Smyth, and Wei Shi. “The R Package Rsubread is
 Easier, Faster, Cheaper and Better for Alignment and Quantification of
 RNA Sequencing Reads.” Nucleic Acids Research, vol. 47, no. 8, 2019,
 e47. <doi:10.1093/nar/gkz114>. Available at:
 <https://academic.oup.com/nar/article/47/8/e47/5371636>.
 
-5.Morgan, M., P. Aboyoun, R. Gentleman, M. Lawrence, and H. Pages.
+7.Morgan, M., P. Aboyoun, R. Gentleman, M. Lawrence, and H. Pages.
 “GenomicAlignments: Efficient Alignments Processing in R for NGS Data.”
 Bioconductor, 2019, <doi:10.18129/B9.bioc.GenomicAlignments>. Available
 at:
 <https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html>.
 
-6.Morgan, Martin, Vincent Obenchain, James Hester, and Hervé Pagès.
+8.Morgan, Martin, Vincent Obenchain, James Hester, and Hervé Pagès.
 SummarizedExperiment: Summarized Experiment Container. R package version
 1.28.0, Bioconductor, 2022,
 <https://bioconductor.org/packages/SummarizedExperiment>.
 
-7.National Center for Biotechnology Information (NCBI). Saccharomyces
+9.National Center for Biotechnology Information (NCBI). Saccharomyces
 cerevisiae S288C Genome Assembly (GCF_000146045.2). NCBI Datasets,
 <https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/>.
 Accessed 4 Nov. 2024.
 
-8.National Center for Biotechnology Information (NCBI). Sequence Read
+10.National Center for Biotechnology Information (NCBI). Sequence Read
 Archive (SRA) Run: ERR12205202. NCBI SRA,
 <https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR12205202&display=download>.
 Accessed 4 Nov. 2024.
 
-9.National Center for Biotechnology Information (NCBI). Sequence Read
+11.National Center for Biotechnology Information (NCBI). Sequence Read
 Archive (SRA) Run: SRR29917898. NCBI SRA,
 <https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29917898&display=download>.
 Accessed 4 Nov. 2024.
 
-10.OpenAI. ChatGPT: Assistance with R Function Development for
+12.OpenAI. ChatGPT: Assistance with R Function Development for
 Bioinformatics Applications, “LegitxMut”. <https://chat.openai.com>.
 Accessed 5 Nov. 2024.
 
-11.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence.
+13.Pagès, Hervé, Patrick Aboyoun, S. DebRoy, and Michael Lawrence.
 GenomeInfoDb: Utilities for Manipulating Chromosome Names, Including
 Modifying the Names to Follow a Particular Convention. R package version
 1.36.0, Bioconductor, 2023,
 <https://bioconductor.org/packages/GenomeInfoDb>.
 
-12.R Core Team. R: A Language and Environment for Statistical Computing.
+14.R Core Team. R: A Language and Environment for Statistical Computing.
 R Foundation for Statistical Computing, 2024, Vienna, Austria,
 <https://www.R-project.org/>.
 
-13.Silva, Anjali. TestingPackage. GitHub,
+15.Silva, Anjali. TestingPackage. GitHub,
 <https://github.com/anjalisilva/TestingPackage>. Accessed 5 Nov. 2024.
 
-14.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis.
+16.Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis.
 Springer-Verlag, 2016, <https://ggplot2.tidyverse.org>.
 
-15.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R
+17.Wickham, Hadley, et al. dplyr: A Grammar of Data Manipulation. R
 package version 1.1.2, 2023, <https://CRAN.R-project.org/package=dplyr>.
 
-16.Wickham, H. stringr: Simple, Consistent Wrappers for Common String
+18.Wickham, H. stringr: Simple, Consistent Wrappers for Common String
 Operations. R package version 1.4.0, 2019,
 <https://CRAN.R-project.org/package=stringr>.
 
@@ -186,7 +200,7 @@ Operations. R package version 1.4.0, 2019,
 
 This package was developed as part of an assessment for 2024 BCB410H:
 Applied Bioinformatics course at the University of Toronto, Toronto,
-CANADA. <LegitXMut> welcomes issues, enhancement requests, and other
+CANADA. *LegitXMut* welcomes issues, enhancement requests, and other
 contributions. To submit an issue, use the GitHub issues.
 
 # Demonstration

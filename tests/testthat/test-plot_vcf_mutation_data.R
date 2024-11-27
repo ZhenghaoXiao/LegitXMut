@@ -8,9 +8,6 @@ test_that("plot_vcf_mutation_data generates a heatmap without errors", {
     plotType = "heatmap",
     title = "Heatmap Test",
     font_size = 12,
-    xlab = "Chromosome",
-    ylab = "Mutation Frequency",
-    legend_position = "bottom"
   ))
 })
 

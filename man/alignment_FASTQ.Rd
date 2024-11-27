@@ -21,7 +21,7 @@ alignment_FASTQ(
 
 \item{maxMismatches}{An integer specifying the maximum number of mismatches allowed in the alignment. Default is 1000.}
 
-\item{outputBAM}{A character string for the name of the output BAM file. Default is "output.bam".}
+\item{outputBAM}{A character string for the name and path of the output BAM and VCF file. Default is "output.bam".}
 }
 \value{
 An object containing alignment information from the BAM file and information of variant calling from VCF file,
