@@ -1,4 +1,6 @@
 # This example is adapted from
+# Chang, W., J. Cheng, J. Allaire, C. Sievert, B. Schloerke, Y. Xie, J. Allen, J. McPherson, A. Dipert, B. Borges (2024).
+# shiny: Web Application Framework for R. R package version 1.9.1, https://CRAN.R-project.org/package=shiny
 # Silva, Anjali. TestingPackage. GitHub, https://github.com/anjalisilva/TestingPackage. Accessed 5 Nov. 2024.
 
 library(shiny)

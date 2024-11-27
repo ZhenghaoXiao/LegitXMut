@@ -51,7 +51,7 @@ library(LegitXMut)
 To run the Shiny app:
 
 ``` r
-runLegitXMut()
+LegitXMut::runLegitXMut()
 ```
 
 # Overview
@@ -84,14 +84,11 @@ users can select from—“heatmap,” “manhattan,” and “rainfall”—eac
 distinct viewpoints on mutation data, including inter-variant distances,
 confidences of the result, and mutation density across chromosomes.
 
-![](inst/extdata/workflow.png)
-
-# Contributions
-
-The author of `LegitXMut` is `Zhenghao Xiao`. The package provides three
-functions to analyze genetic variation by allowing users to align
-sequence reads, standardize chromosome names, and visualize mutation
-patterns in one package.
+![](inst/extdata/workflow.png) \# Contributions The author of
+`LegitXMut` is `Zhenghao Xiao`. The package provides three functions to
+analyze genetic variation by allowing users to align sequence reads,
+standardize chromosome names, and visualize mutation patterns in one
+package.
 
 `alignment_FASTQ()`: `Rsubread` and `GenomicAlignments` was employed to
 align a FASTQ file to a reference genome, generating BAM and VCF files

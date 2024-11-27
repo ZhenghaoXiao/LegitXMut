@@ -189,8 +189,8 @@ plot_vcf_mutation_data(
 
 ## Package References
 
-- Zhenghao, X. (2024) LegitXMut: an R package developed to analyze and visualize mutation data directly from entry of FASTA and FASTQ files.
- unpublished. https://github.com/ZhenghaoXiao/LegitXMut
+- "Xiao, Z. (2024) LegitXMut: A User-Friendly R Package for Nanopore Sequencing Mutation Analysis: Efficient, Accessible Workflows from FASTQ File Alignment to Visualizations.
+   Unpublished. URL https://github.com/zhenghao/LegitXMut."
 
 <br>
 

@@ -43,7 +43,7 @@ library(LegitXMut)
 ```
 To run the Shiny app:
 ```{r, eval = FALSE}
-runLegitXMut()
+LegitXMut::runLegitXMut()
 ```
 # Overview
 
@@ -54,7 +54,6 @@ ls("package:LegitXMut")
 data(package = "LegitXMut") 
 browseVignettes("LegitXMut")
 ```
-
 `LegitXMut` provides the following functions for now: 
 - `alignment_FASTQ`:This function creates a `BAM` file and calls variants by aligning a `FASTQ` file to a provided reference genome in `FASTA` format. 
 It allows the setting of maximal indel and mismatch criteria for quality control and optimization. The result `.VCF` file should be input into `update_vcf`
@@ -68,7 +67,6 @@ The three graphic types that users can select from—"heatmap," "manhattan," and
 confidences of the result, and mutation density across chromosomes.
 
 ![](inst/extdata/workflow.png)
-
 # Contributions
 The author of `LegitXMut` is `Zhenghao Xiao`. The package provides three functions to analyze genetic variation by allowing users to 
 align sequence reads, standardize chromosome names, and visualize mutation patterns in one package.
