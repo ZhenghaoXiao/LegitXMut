@@ -14,8 +14,8 @@
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
 #' @details
-#' The LegitXMut package includes external demo data stored in the extdata directory.
-#'    These external files are provided for demonstration purposes and support reproducibility of the analysis.
+#' The LegitXMut package includes external demo data stored in the extdata directory,
+#'    and these external files are provided for demonstration purposes and support reproducibility of the analysis.
 #'
 #' @examples
 #' # Example 1: Align a FASTQ file to a reference genome with custom parameters.
