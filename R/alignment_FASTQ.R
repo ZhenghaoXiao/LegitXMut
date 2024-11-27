@@ -1,6 +1,6 @@
 #' Aligns FASTQ File to Reference Genome and Produces a BAM File, a VCF File and a Summary
 #'
-#' A function to align a FASTQ file to a reference genome, generating a BAM file.
+#' A function to align a FASTQ file to a reference genome, generating a BAM and a VCF file.
 #' This function is suitable for handling large sequencing datasets and supports
 #' alignment of Nanopore reads and quality control.
 #'
@@ -8,7 +8,7 @@
 #' @param referencePath A character string for the path to the reference genome in FASTA format.
 #' @param indels An integer specifying the maximum number of insertions or deletions allowed in the alignment. Default is 10.
 #' @param maxMismatches An integer specifying the maximum number of mismatches allowed in the alignment. Default is 1000.
-#' @param outputBAM A character string for the name and path of the output BAM and VCF file. Default is "output.bam".
+#' @param outputBAM A character string for the name and path of the output BAM and VCF file. Default is "output.bam". VCF file follows this name
 #'
 #' @return An object containing alignment information from the BAM file and information of variant calling from VCF file,
 #'    which can be used for downstream analysis, including variant calling and visualization.

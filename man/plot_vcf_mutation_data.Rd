@@ -25,8 +25,8 @@ or "rainfall" (distance between variants).}
 
 \item{title}{A character string specifying the title of the plot.}
 
-\item{color_scheme}{A named vector of colors for different mutation types or heatmap scale.
-Default colors are provided, but users can customize for "heatmap" or "rainfall".}
+\item{color_scheme}{A named vector of colors for different mutation types.
+Colors are fixed for "manhattan", but users can customize for "heatmap" or "rainfall".}
 
 \item{alpha}{A numeric value between 0 and 1 to set the transparency of points in plots (default is 0.6).}
 
@@ -39,12 +39,12 @@ Default colors are provided, but users can customize for "heatmap" or "rainfall"
 \item{legend_position}{A character string specifying the legend position ("top", "bottom", "left", "right").}
 }
 \value{
-A plot visualizing mutation information based on the selected plot type.
+A plot visualizing mutation information based on the selected plot type and parameters
 }
 \description{
 This function takes a VCF file and generates different mutation visualization plots,
-including karyograms, density plots, lollipop plots, and circos plots. It provides
-genome-specific and mutation-focused visualizations directly from the VCF file.
+including heatmap, rainfall plot, and manhattan plot. It provides
+genome-specific and, across chromosomes mutation visualizations directly from the VCF file.
 }
 \examples{
 # Example 1: Generate a heatmap of variants' frequency across chromosomes

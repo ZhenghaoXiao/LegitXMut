@@ -2,7 +2,7 @@
 % Please edit documentation in R/update_vcf.R
 \name{update_vcf}
 \alias{update_vcf}
-\title{Update Chromosome Names to VCF File Based on Reference FASTA If Performing Single Chromosome Analysis}
+\title{Update Chromosome Names to VCF File Based on Reference FASTA If Performing Mulitple Chromosomes Analysis}
 \usage{
 update_vcf(fastaPath, vcfPath, outputVcfPath)
 }
@@ -18,7 +18,7 @@ NULL. A message confirms that the VCF file has been updated and saved.
 }
 \description{
 This function reads a reference FASTA file to extract chromosome mappings and updates.
-The chromosome names in a VCF file accordingly. The updated VCF file is saved to a specified output path.
+Update the chromosome names in a VCF file accordingly. The updated VCF file is saved to a specified output path.
 }
 \examples{
 # Example: Update chromosome names in a VCF file using a reference FASTA file/FNA file

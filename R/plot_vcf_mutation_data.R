@@ -1,23 +1,23 @@
 #' Visualize Mutation Data from VCF File in Various Plot Styles
 #'
 #' This function takes a VCF file and generates different mutation visualization plots,
-#' including karyograms, density plots, lollipop plots, and circos plots. It provides
-#' genome-specific and mutation-focused visualizations directly from the VCF file.
+#' including heatmap, rainfall plot, and manhattan plot. It provides
+#' genome-specific and, across chromosomes mutation visualizations directly from the VCF file.
 #'
 #' @param vcfPath A character string specifying the path to the updated VCF file.
 #' @param plotType A character string specifying the type of plot to generate.
 #'    Options are "heatmap" (heatmap of variants across chromosomes), "manhattan" (variant distribution),
 #'    or "rainfall" (distance between variants).
 #' @param title A character string specifying the title of the plot.
-#' @param color_scheme A named vector of colors for different mutation types or heatmap scale.
-#'    Default colors are provided, but users can customize for "heatmap" or "rainfall".
+#' @param color_scheme A named vector of colors for different mutation types.
+#'    Colors are fixed for "manhattan", but users can customize for "heatmap" or "rainfall".
 #' @param alpha A numeric value between 0 and 1 to set the transparency of points in plots (default is 0.6).
 #' @param font_size A numeric value for the font size of plot labels and titles (default is 10).
 #' @param xlab A character string for the x-axis label (default is "Position").
 #' @param ylab A character string for the y-axis label, which varies by plot type.
 #' @param legend_position A character string specifying the legend position ("top", "bottom", "left", "right").
 #'
-#' @return A plot visualizing mutation information based on the selected plot type.
+#' @return A plot visualizing mutation information based on the selected plot type and parameters
 #'
 #' @examples
 #' # Example 1: Generate a heatmap of variants' frequency across chromosomes

@@ -21,14 +21,14 @@ alignment_FASTQ(
 
 \item{maxMismatches}{An integer specifying the maximum number of mismatches allowed in the alignment. Default is 1000.}
 
-\item{outputBAM}{A character string for the name and path of the output BAM and VCF file. Default is "output.bam".}
+\item{outputBAM}{A character string for the name and path of the output BAM and VCF file. Default is "output.bam". VCF file follows this name}
 }
 \value{
 An object containing alignment information from the BAM file and information of variant calling from VCF file,
 which can be used for downstream analysis, including variant calling and visualization.
 }
 \description{
-A function to align a FASTQ file to a reference genome, generating a BAM file.
+A function to align a FASTQ file to a reference genome, generating a BAM and a VCF file.
 This function is suitable for handling large sequencing datasets and supports
 alignment of Nanopore reads and quality control.
 }

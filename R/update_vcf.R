@@ -1,7 +1,7 @@
-#' Update Chromosome Names to VCF File Based on Reference FASTA If Performing Single Chromosome Analysis
+#' Update Chromosome Names to VCF File Based on Reference FASTA If Performing Mulitple Chromosomes Analysis
 #'
 #' This function reads a reference FASTA file to extract chromosome mappings and updates.
-#' The chromosome names in a VCF file accordingly. The updated VCF file is saved to a specified output path.
+#' Update the chromosome names in a VCF file accordingly. The updated VCF file is saved to a specified output path.
 #'
 #' @param fastaPath A character string specifying the path to the reference FASTA file.
 #' @param vcfPath A character string specifying the path to the input VCF file that needs chromosome name updating.
