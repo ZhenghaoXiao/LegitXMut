@@ -1,6 +1,6 @@
 Package: LegitXMut
 Type: Package
-Title: An R Package Designed for Mutation Analysis Directly from FASTQ File to Visualization
+Title: A user-friendly R package for Nanopore sequencing mutation analysis. It offers efficient, accessible workflows from FASTQ file alignment to visualizations.
 Version: 0.1.0
 Authors@R: person("Zhenghao", "Xiao", 
                   email = "zhenghao.xiao@mail.utoronto.ca", 

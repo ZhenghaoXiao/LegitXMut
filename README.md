@@ -6,8 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-An R Package Designed For Mutation Analysis Directly From FASTQ file to
-Visualization.
+A user-friendly R package for Nanopore sequencing mutation analysis. It
+offers efficient, accessible workflows from FASTQ file alignment to
+visualizations.
 
 # Description
 
