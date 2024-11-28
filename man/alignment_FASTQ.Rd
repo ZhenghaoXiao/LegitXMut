@@ -29,7 +29,7 @@ which can be used for downstream analysis, including variant calling and visuali
 }
 \description{
 A function to align a FASTQ file to a reference genome, generating a BAM and a VCF file.
-This function is suitable for handling large sequencing datasets and supports
+This function is suitable for handling large sequencing datasets and supports,
 alignment of Nanopore reads and quality control.
 }
 \details{

@@ -1,7 +1,7 @@
 #' Aligns FASTQ File to Reference Genome and Produces a BAM File, a VCF File and a Summary
 #'
 #' A function to align a FASTQ file to a reference genome, generating a BAM and a VCF file.
-#' This function is suitable for handling large sequencing datasets and supports
+#' This function is suitable for handling large sequencing datasets and supports,
 #' alignment of Nanopore reads and quality control.
 #'
 #' @param fastqPath A character string for the path to the FASTQ file.
