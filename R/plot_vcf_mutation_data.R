@@ -132,6 +132,11 @@ plot_vcf_mutation_data <- function(vcfPath, plotType = "manhattan", title = "Plo
     stop("Length of 'seqnames' does not match the number of ranges.")
   }
 
+  # Validate alpha
+  if (!is.numeric(alpha) || alpha < 0 || alpha > 1) {
+    stop("Alpha must be a numeric value between 0 and 1.")
+  }
+
   # --- CREATE GRanges OBJECT ---
   # Store information
   gr <- GenomicRanges::GRanges(

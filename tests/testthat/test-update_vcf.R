@@ -37,3 +37,30 @@ test_that("update_vcf handles cases with no matching chromosomes gracefully", {
 
   unlink(outputVcfPath)
 })
+
+test_that("update_vcf throws error for incorrect file types", {
+  # Define paths to incorrect file types
+  incorrectFastaPath <- system.file("extdata", "not_a_fasta.txt", package = "LegitXMut") # Invalid file type for FASTA
+  vcfPath <- system.file("extdata", "aligned_output.bam.indel.vcf", package = "LegitXMut") # Valid VCF file path
+  incorrectVcfPath <- system.file("extdata", "not_a_vcf.txt", package = "LegitXMut") # Invalid file type for VCF
+  outputVcfPath <- tempfile(fileext = ".vcf") # Temporary path for updated VCF file
+
+  # Skip test if files are not present
+  skip_if_not(file.exists(vcfPath), "Test VCF file not found")
+
+  # Test with incorrect FASTA file type
+  expect_error(
+    update_vcf(incorrectFastaPath, vcfPath, outputVcfPath),
+    "The specified FASTA file does not exist"
+  )
+
+  # Test with incorrect VCF file type
+  expect_error(
+    update_vcf(fastaPath = system.file("extdata", "yeast.fna", package = "LegitXMut"),
+               vcfPath = incorrectVcfPath,
+               outputVcfPath = outputVcfPath),
+    "The specified VCF file does not exist"
+  )
+
+  unlink(outputVcfPath)
+})
