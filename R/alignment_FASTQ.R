@@ -13,8 +13,7 @@
 #' @return An object containing alignment information from the BAM file and information of variant calling from VCF file,
 #'    which can be used for downstream analysis, including variant calling and visualization.
 #'
-#' @details
-#' The LegitXMut package includes external demo data stored in the extdata directory,
+#' @details The LegitXMut package includes external demo data stored in the extdata directory,
 #'    and these external files are provided for demonstration purposes and support reproducibility of the analysis.
 #'
 #' @examples

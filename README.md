@@ -25,15 +25,15 @@ help users to perform end-to-end genomic variant analysis within
 `file paths` to `local paths` for `tests` and `usage`.
 
 This package fills a gap in bioinformatics workflows by allowing direct
-handling of FASTQ, and VCF files for visualization of mutations, which
-can aid in exploratory data analysis and the interpretation of mutation
-patterns across various chromosomes. Unlike many existing tools,
-`LegitXMut` is uniquely focused on a complete solution from alignment to
-visualization in `R language`, offering functions for generating
-compelling graphical outputs such as `heatmaps`, `rainfall plots`, and
-`manhattan plots` to illustrate mutation distributions and result
-confidences. The `LegitXMut` package was developed using
-`R version 4.4.1 (June, 2024)`, Platform:
+handling of `FASTQ`, and `VCF` files for visualization of mutations,
+which can aid in exploratory data analysis and the interpretation of
+mutation patterns across various chromosomes. Unlike many existing
+tools, `LegitXMut` is uniquely focused on a complete solution from
+alignment to visualization in `R language`, offering functions for
+generating compelling graphical outputs such as `heatmaps`,
+`rainfall plots`, and `manhattan plots` to illustrate mutation
+distributions and result confidences. The `LegitXMut` package was
+developed using `R version 4.4.1 (June, 2024)`, Platform:
 `x86_64-w64-mingw32/x64 (64-bit)`, running under `Windows 11`.
 
 # Installation
@@ -46,6 +46,19 @@ library(devtools)
 # Install LegitXMut from GitHub with vignettes
 devtools::install_github("ZhenghaoXiao/LegitXMut", build_vignettes = TRUE)
 library(LegitXMut)
+
+# Rtools is a mandatory requirement for this package
+# If errors occur mentioning any dependencies was failed to install
+# Please manually install them on Bioconductor (Likely to be VariantAnnotation and GenomicAlignments)
+# For Example:
+#if (!require("BiocManager", quietly = TRUE))
+    #install.packages("BiocManager")
+#BiocManager::install("VariantAnnotation")
+
+#if (!require("BiocManager", quietly = TRUE))
+    #install.packages("BiocManager")
+
+#BiocManager::install("GenomicAlignments")
 ```
 
 To run the Shiny app:
@@ -101,13 +114,15 @@ visualize mutation patterns in one package.
 align a FASTQ file to a reference genome, generating `BAM` and `VCF`
 files while allowing quality control through configurable parameters for
 `indels` and `mismatches`. OpenAI was used for debugging suggestions and
-potential function suggestions only.
+potential function suggestions only, and the function was fully
+constructed and written by the author.
 
 `update_vcf()`: This function utilizes `VariantAnnotation`, `stringr`
 and `GenomeInfoDb` to update chromosome names in VCF files according to
 a reference genome `FASTA` file, the updated file will used for
 visualizations. OpenAI was used for debugging suggestions and potential
-function suggestions only.
+function suggestions only, and the function was fully constructed and
+written by the author.
 
 `plot_vcf_mutation_data()`: This function requires `VariantAnnotation`,
 `GenomicRanges`, `ggplot2`, `ComplexHeatmap`, `SummarizedExperiment`,
@@ -116,7 +131,8 @@ function suggestions only.
 data from VCF files to help with understanding chromosome-to-chromosome
 inter-variant distances, mutation frequency density, and
 distribution.OpenAI was used for debugging suggestions and potential
-function suggestions only.
+function suggestions only, and the function was fully constructed and
+written by the author.
 
 # References
 
@@ -225,3 +241,48 @@ The following figures were generating using the data set SRR29917898
 ![](inst/extdata/manhattan.png)
 
 ![](inst/extdata/rainfall.png)
+
+The package tree structure is provided below.
+
+    - LegitXMut
+      |- LegitXMut.Rproj
+      |- DESCRIPTION
+      |- NAMESPACE
+      |- LICENSE
+      |- README.md
+      |- inst
+        CITATION
+        |- extdata
+          |- ERR12205202.fastq
+          |- aligned_output.bam
+          |- aligned_output.bam.indel.vcf
+          |- ERR12205202.fastq
+          |- heatmap.png
+          |- manhattan.png
+          |- rainfall.png
+          |- updated.vcf
+          |- workflow.png
+          |- yeast.fna
+        |- shiny-scripts
+          |- app.R
+      |- man
+        |- alignment_FASTQ.Rd
+        |- update_vcf.Rd
+        |- plot_vcf_mutation_data.Rd
+        |- runLegitXMut.Rd
+      |- R
+        |- alignment_FASTQ.R
+        |- update_vcf.R
+        |- plot_vcf_mutation_data.R
+        |- runLegitXMut.R
+      |- vignettes
+        |- heatmap.png
+        |- manhattan.png
+        |- rainfall.png
+        |- Introduction_Of_LegitXMut.Rmd
+      |- tests
+        |- testthat.R
+        |- testthat
+          |- test-alignment_FASTQ.R
+          |- test-update_vcf.R
+          |- test-plot_vcf_mutation_data.R

@@ -23,7 +23,7 @@ ui <- fluidPage(
            tags$h3("Description:"),
            tags$p("LegitXMut is an R package tailored for mutation analyze for Nanopore sequencing data. With this app,
               you can align FASTQ files to a reference genome, update VCF files, and create visually engaging plots
-              to explore mutation patterns."),
+              to explore mutation patterns. Please fully read through the following instructions for the best user experience"),
            tags$h3("Instructions:"),
            tags$ol(
              tags$li("In 'Step 1', upload your sequencing data and reference genome to generate BAM and VCF files."),
@@ -32,9 +32,20 @@ ui <- fluidPage(
            ),
            tags$p("Navigate through the tabs on the top right to view logs and plots. Customize settings in each step for better control
               of the analysis."),
+           tags$h3("Demo Data:"),
+           tags$p("Demo files are available in the package's 'extdata' directory. Use the following R code to access them:"),
+           tags$pre(
+             "demo_fastq <- system.file(\"extdata\", \"ERR12205202.fastq\", package = \"LegitXMut\")\n",
+             "demo_fasta <- system.file(\"extdata\", \"yeast.fna\", package = \"LegitXMut\")\n",
+             "demo_vcf <- system.file(\"extdata\", \"aligned_output.bam.indel.vcf\", package = \"LegitXMut\")\n",
+             "print(demo_fastq)\n",
+             "print(demo_fasta)\n",
+             "print(demo_vcf)"
+           ),
            tags$h4("For visualizations, xlab, ylab, and legend position are fixed for heatmap;
                   Demo data only have insertion-deletion variants of more than one nucleotides
-                  changes and Only indel will be visualized because the this alignment method only output indel into VCF;
+                  changes and only indel will be visualized at the moment because the this alignment method only output indel into VCF;
+                  Remember to reupload the updated.vcf to the shiny app before visualization;
                   Manhattan plots do not allow color modifications since the potentially high number of chromosomes displayed")
   ),
 
